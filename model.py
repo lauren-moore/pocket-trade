@@ -57,7 +57,7 @@ class UserCard(db.Model):
     user = db.relationship("User", backref="user_cards")
 
     def __repr__(self):
-        return f'<This card={self.card_id} belongs to user={self.user_id}>'
+        return f'<Card {self.card_id} belongs to user {self.user_id}>'
 
 class Order(db.Model):
     """A receipt of card purchase."""
@@ -75,7 +75,7 @@ class Order(db.Model):
     purchased = db.Column(db.DateTime, nullable=False)
     
     user_card = db.relationship("UserCard", backref="orders")
-    user = db.relationship("User", backref="orders")
+    buyer = db.relationship("User", backref="orders")
 
     def __repr__(self):
         return f'<Order order_id={self.order_id} card={self.card_id} seller={self.seller_id} buyer={self.buyer_id}>'
@@ -92,8 +92,8 @@ class ShoppingCart(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey("users.user_id"))
     user_card_id = db.Column(db.Integer, db.ForeignKey("user_cards.user_card_id"))
 
-    user_ = db.relationship("User", backref="orders")
-    user_card_id = db.relationship("UserCard", backref="orders")
+    user = db.relationship("User", backref="shopping_carts")
+    user_card = db.relationship("UserCard", backref="shopping_carts")
     
     def __repr__(self):
         return f'<Shopping cart shopping_cart_id={self.shopping_cart_id} user_id={self.user_id} user_card_id={self.user_card_id}>'

@@ -1,6 +1,6 @@
 """CRUD operations."""
 
-from model import db, User, Card, UserCard, ShoppingCart, connect_to_db
+from model import db, User, Card, UserCard, connect_to_db
 
 
 # def create_user(name, email, password):
