@@ -5,13 +5,15 @@
       "types": "Fire",
       "rules": "Discard 1 Energy card attached to Blaine's Charmander in order to use this attack. If the Defending Pokémon has any Energy cards attached to it, choose 1 of them and discard it.",
       "price": 2,
-      "image_path": 
+      "image_path": "This is a pic"
     },
     {
-      "overview": "After he and his wife are murdered, marine Ray Garrison is resurrected by a team of scientists. Enhanced with nanotechnology, he becomes a superhuman, biotech killing machine\u2014'Bloodshot'. As Ray first trains with fellow super-soldiers, he cannot recall anything from his former life. But when his memories flood back and he remembers the man that killed both him and his wife, he breaks out of the facility to get revenge, only to discover that there's more to the conspiracy than he thought.",
-      "poster_path": "https://image.tmdb.org/t/p/original//8WUVHemHFH2ZIP6NWkwlHWsyrEL.jpg",
-      "release_date": "2020-03-13",
-      "title": "Bloodshot"
+      "pokemon_name": "Jigglypuff",
+      "card_name": "Erika's Jigglypuff",
+      "types": "Normal, Fairy",
+      "rules": "You and your opponent remove 1 damage counter from each of your Pokémon with damage counters on them.",
+      "price": 2.5,
+      "image_path": "This is another pic"
     }
   ]
   

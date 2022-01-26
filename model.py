@@ -70,15 +70,15 @@ class Order(db.Model):
     # card_id = db.Column(db.Integer, db.ForeignKey("cards.card_id"))
     user_card_id = db.Column(db.Integer, db.ForeignKey("user_cards.user_card_id"))
     # seller_id = db.Column(db.Integer, db.ForeignKey("users.user_id"))
-    buyer_id = db.Column(db.Integer, db.ForeignKey("users.user_id"))
+    user_id = db.Column(db.Integer, db.ForeignKey("users.user_id"))
     listed = db.Column(db.DateTime, nullable=False)
     purchased = db.Column(db.DateTime, nullable=False)
     
     user_card = db.relationship("UserCard", backref="orders")
-    buyer = db.relationship("User", backref="orders")
+    user = db.relationship("User", backref="orders")
 
     def __repr__(self):
-        return f'<Order order_id={self.order_id} card={self.card_id} seller={self.seller_id} buyer={self.buyer_id}>'
+        return f'<Order order_id={self.order_id} user_card={self.user_card_id} user={self.user_id}>'
 
 
 class ShoppingCart(db.Model):
@@ -88,12 +88,14 @@ class ShoppingCart(db.Model):
 
     shopping_cart_id = db.Column(db.Integer,
                         autoincrement=True,
-                        primary_key=True)
+                        primary_key=True,
+                        nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey("users.user_id"))
     user_card_id = db.Column(db.Integer, db.ForeignKey("user_cards.user_card_id"))
 
-    user = db.relationship("User", backref="shopping_carts")
-    user_card = db.relationship("UserCard", backref="shopping_carts")
+    user = db.relationship("User", backref="shopping_cart")
+    #should user_card be plural?
+    user_card = db.relationship("UserCard", backref="shopping_cart")
     
     def __repr__(self):
         return f'<Shopping cart shopping_cart_id={self.shopping_cart_id} user_id={self.user_id} user_card_id={self.user_card_id}>'

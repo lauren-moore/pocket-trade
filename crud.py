@@ -10,10 +10,10 @@ def create_user(name, email, password):
 
     return user
 
-def create_card(name, types, rules, price, image_path):
+def create_card(pokemon_name, card_name, types, rules, price, image_path):
     """Create and return a new card."""
 
-    card = Card(name=name,types=types, rules=rules, price=price, image_path=image_path)
+    card = Card(pokemon_name=pokemon_name,card_name=card_name, types=types, rules=rules, price=price, image_path=image_path)
 
     return card
 
@@ -24,10 +24,10 @@ def create_user_card(user, card):
 
     return user_card
 
-def create_order(listed, purchased, buyer):
+def create_order(user_card, user, listed, purchased):
     """Create and return a new rating."""
 
-    order = Order(listed=listed, purchased=purchased, buyer=user)
+    order = Order(user_card=user_card, user=user, listed=listed, purchased=purchased)
 
     return order
 
@@ -96,7 +96,7 @@ def get_user_cards_by_user(user_id):
 def get_orders():
     '''Return all orders.'''
 
-    return Orders.query.all()
+    return Order.query.all()
 
 def get_order_by_id(order_id):
     '''get order by id'''
