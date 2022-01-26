@@ -15,60 +15,50 @@ def homepage():
 
     return render_template('homepage.html')
 
-# @app.route('/movies')
-# def all_movies():
-#     """View movies page."""
-
-#     movies = crud.get_movies()
-
-#     return render_template('all_movies.html', movies=movies)
 
 
-# @app.route('/users')
+
+
+# @app.route('/login')
 # def all_users():
-#     """View users page."""
+#     """View log in page."""
 
-#     users = crud.get_users()
+#     return render_template('login.html')
 
-#     return render_template('all_users.html', users=users)
+# @app.route("/create-account")
+# def view_register_user():
+#     """Create a new user."""
 
+#     return render_template('create_account.html')
 
-# @app.route('/movies/<movie_id>')
-# def show_movie(movie_id):
-#     """Show movie detailes."""
-
-#     movie = crud.get_movie_by_id(movie_id)
-
-#     return render_template('movie_details.html', movie=movie)
-
-
-
-# @app.route('/users/<user_id>')
-# def show_user(user_id):
-#     """Show user detailes."""
-
-#     user = crud.get_user_by_id(user_id)
-
-#     return render_template('user_details.html', user=user)
-
-# @app.route("/users", methods=["POST"])
+# @app.route("/create-account", methods=["POST"])
 # def register_user():
 #     """Create a new user."""
 
+#     name= request.form.get("name")
 #     email = request.form.get("email")
 #     password = request.form.get("password")
 
 #     user = crud.get_user_by_email(email)
 
 #     if user:
-#          flash("Cannot create an account with that email. Try again.")
+#          flash("An account has already been created with that email address. Try again.")
 #     else:
-#         user = crud.create_user(email, password)
+#         user = crud.create_user(name, email, password)
 #         db.session.add(user)
 #         db.session.commit()
 #         flash("Account created! Please log in.")
 
-#     return redirect("/")
+#         return redirect('login.html')
+    
+
+# @app.route('/users/<user_id>')
+# def show_user_details(user_id):
+#     """Show user details."""
+
+#     user = crud.get_user_by_id(user_id)
+
+#     return render_template('user_details.html', user=user)
 
 if __name__ == "__main__":
     # DebugToolbarExtension(app)
