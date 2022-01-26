@@ -16,49 +16,107 @@ def homepage():
     return render_template('homepage.html')
 
 
+@app.route('/login')
+def log_in():
+    """Log in page."""
+
+    email = request.form.get("email")
+    password = request.form.get("password")
+
+    return render_template('login.html')
 
 
+@app.route("/create-account")
+def view_register_user():
+    """Create a new user."""
 
-# @app.route('/login')
-# def all_users():
-#     """View log in page."""
+    return render_template('create_account.html')
 
-#     return render_template('login.html')
 
-# @app.route("/create-account")
-# def view_register_user():
-#     """Create a new user."""
+@app.route('/cards')
+def all_cards():
+    """View cards page."""
 
-#     return render_template('create_account.html')
+    cards = crud.get_cards()
 
-# @app.route("/create-account", methods=["POST"])
-# def register_user():
-#     """Create a new user."""
+    return render_template('all_cards.html', cards=cards)
 
-#     name= request.form.get("name")
-#     email = request.form.get("email")
-#     password = request.form.get("password")
 
-#     user = crud.get_user_by_email(email)
+@app.route('/users')
+def all_users():
+    """View users page."""
 
-#     if user:
-#          flash("An account has already been created with that email address. Try again.")
-#     else:
-#         user = crud.create_user(name, email, password)
-#         db.session.add(user)
-#         db.session.commit()
-#         flash("Account created! Please log in.")
+    users = crud.get_users()
 
-#         return redirect('login.html')
+    return render_template('all_users.html', users=users)
+
+
+@app.route('/cards/<card_id>')
+def show_card(card_id):
+    """Show card details."""
+
+    card = crud.get_card_by_id(card_id)
+
+    return render_template('card_details.html', card=card)
+
+
+@app.route('/users/<user_id>')
+def show_user(user_id):
+    """Show user details."""
+
+    user = crud.get_user_by_id(user_id)
+
+    return render_template('user_details.html', user=user)
+
+
+@app.route('/cart/<shopping_cart_id>')
+def sho_shopping_cart(user_id):
+    """Get shopping cart by user id."""
+
+    shopping_cart = crud.get_shopping_cart_by_user_id(user_id)
+
+    return render_template('shopping_cart.html', shopping_cart=shopping_cart)
+
+
+@app.route("/users", methods=["POST"])
+def register_user():
+    """Create a new user."""
+
+    name= request.form.get("name")
+    email = request.form.get("email")
+    password = request.form.get("password")
+
+    user = crud.get_user_by_email(email)
+
+    if user:
+        flash("An account has already been created with that email address. Try again.")
+    else:
+        user = crud.create_user(name, email, password)
+        db.session.add(user)
+        db.session.commit()
+        flash("Account created! Please log in.")
+
+        return redirect('login.html')
     
+    
+@app.route("/login", methods=["POST"])
+def process_login():
+    """Process user login."""
 
-# @app.route('/users/<user_id>')
-# def show_user_details(user_id):
-#     """Show user details."""
+    email = request.form.get("email")
+    password = request.form.get("password")
 
-#     user = crud.get_user_by_id(user_id)
+    user = crud.get_user_by_email(email)
+    if not user or user.password != password:
+        flash("The email or password you entered was incorrect.")
+    else:
+        session["user_email"] = user.email
+        flash(f"Welcome back, {user.email}!")
 
-#     return render_template('user_details.html', user=user)
+    return redirect("/")
+
+
+
 
 if __name__ == "__main__":
     # DebugToolbarExtension(app)

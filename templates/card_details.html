@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %} Card Info {% endblock %}
+
+{% block body %}
+<h1>{{ card.pokemon_name }}</h1>
+
+<p>
+  The card name is {{ card.card_name }}
+</p>
+
+
+<p>
+    The card type is {{ card.types }}
+  </p>
+  
+
+
+  <p>
+    The card rules are {{ card.rules }}
+  </p>
+  
+
+{% endblock %}

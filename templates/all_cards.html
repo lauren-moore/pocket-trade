@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}All Cards{% endblock %}
+
+
+{% block body %}
+  <h1>All Cards</h1>
+
+  <ul>
+    {% for card in cards %}
+      <li>
+        <a href="/cards/{{ card.card_id }}">Card #{{ card.card_id }} </a>
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}
