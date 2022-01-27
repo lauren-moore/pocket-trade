@@ -42,6 +42,24 @@ def all_cards():
     return render_template('all_cards.html', cards=cards)
 
 
+@app.route('/usercards/<card_id>')
+def all_usercards(card_id):
+    """View all available usercards."""
+
+    usercards = crud.get_user_cards()
+
+    return render_template('all_usercards.html', usercards=usercards)
+
+
+# @app.route('/usercards/<user_card_id>')
+# def show_user_card(user_card_id):
+#     """View user card by id."""
+
+#     usercard = crud.get_user_card_by_id(user_card_id)
+
+#     return render_template('card_details.html', usercard=usercard)
+
+
 @app.route('/users')
 def all_users():
     """View users page."""
@@ -51,13 +69,13 @@ def all_users():
     return render_template('all_users.html', users=users)
 
 
-@app.route('/cards/<card_id>')
-def show_card(card_id):
+@app.route('/cards/<user_card_id>')
+def show_card(user_card_id):
     """Show card details."""
 
-    card = crud.get_card_by_id(card_id)
+    usercard = crud.get_user_card_by_id(user_card_id)
 
-    return render_template('card_details.html', card=card)
+    return render_template('card_details.html', usercard=usercard)
 
 
 @app.route('/users/<user_id>')
@@ -69,7 +87,7 @@ def show_user(user_id):
     return render_template('user_details.html', user=user)
 
 
-@app.route('/cart/<shopping_cart_id>')
+@app.route('/shoppingcart/<shopping_cart_id>')
 def sho_shopping_cart(user_id):
     """Get shopping cart by user id."""
 
@@ -96,7 +114,7 @@ def register_user():
         db.session.commit()
         flash("Account created! Please log in.")
 
-        return redirect('login.html')
+    return redirect('/login')
     
     
 @app.route("/login", methods=["POST"])
@@ -110,11 +128,26 @@ def process_login():
     if not user or user.password != password:
         flash("The email or password you entered was incorrect.")
     else:
-        session["user_email"] = user.email
-        flash(f"Welcome back, {user.email}!")
+        session["user_name"] = user.name
+        flash(f"Welcome back, {user.name.title()}!")
 
     return redirect("/")
 
+@app.route("/shoppingcart", methods=["POST"])
+def add_to_cart():
+    """Add usercard to shopping cart."""
+
+    email = request.form.get("email")
+    password = request.form.get("password")
+
+    user = crud.get_user_by_email(email)
+    if not user or user.password != password:
+        flash("The email or password you entered was incorrect.")
+    else:
+        session["user_name"] = user.name
+        flash(f"Welcome back, {user.name}!")
+
+    return redirect("/")
 
 
 

@@ -3,22 +3,29 @@
 {% block title %} Card Info {% endblock %}
 
 {% block body %}
-<h1>{{ card.pokemon_name }}</h1>
+<h1>{{ usercard.card.pokemon_name }}</h1>
 
 <p>
-  The card name is {{ card.card_name }}
+  Card: {{ usercard.card.card_name }}
 </p>
 
+<p>
+  Rules: {{ usercard.card.rules }}
+</p>
 
 <p>
-    The card type is {{ card.types }}
-  </p>
-  
+  Price: {{ usercard.card.price }}
+</p>
 
+<p>
+  Seller: {{ usercard.user.name }}
+</p>
+
+<form action="/shopping_cart" method="POST">
 
   <p>
-    The card rules are {{ card.rules }}
+    <button type="button">ADD TO CART</button>
   </p>
-  
+</form>
 
 {% endblock %}

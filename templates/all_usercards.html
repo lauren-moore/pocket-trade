@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}All UserCards{% endblock %}
+
+
+{% block body %}
+  <h1>All UserCards</h1>
+
+  <ul>
+    {% for usercard in usercards %}
+      <li>
+        <a href="/cards/{{ usercard.user_card_id }}">UserCard #{{ usercard.user_card_id }} </a>
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}

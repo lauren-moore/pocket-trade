@@ -32,13 +32,43 @@ class Card(db.Model):
                         primary_key=True)
     pokemon_name = db.Column(db.String, nullable=False)
     card_name = db.Column(db.String, nullable=False, unique=True)
-    types = db.Column(db.String, nullable=False)
     rules = db.Column(db.Text, nullable=False)
     price = db.Column(db.Integer, nullable=False)
     image_path = db.Column(db.String, nullable=False)
     
     def __repr__(self):
         return f'<Card card_id={self.card_id} pokemon_name={self.pokemon_name} card_name={self.card_name} price={self.price}>'
+
+
+class Types(db.Model):
+    """Types of Pokemon."""
+
+    tablename = "types"
+
+    types_id = db.Column(db.Integer,
+                        autoincrement=True,
+                        primary_key=True,
+                        nullable=False)
+    name = db.Column(db.String, nullable=False, unique=True)
+
+    def __repr__(self):
+        return f'<Types_id={self.types_id} type={self.name}>'
+
+
+class CardTypes(db.Model):
+    """Types belonging to specific Pokemon"""
+
+    tablename = "cardtypes"
+
+    cardtype_id = db.Column(db.Integer,
+                        autoincrement=True,
+                        primary_key=True,
+                        nullable=False)
+    types_id = db.Column(db.Integer, db.ForeignKey("types.types_id"))
+    card_id = db.Column(db.Integer, db.ForeignKey("cards.card_id"))
+
+    card = db.relationship("Card", backref="cardtypes")
+    types = db.relationship("Types", backref="cardtypes")
 
 
 class UserCard(db.Model):
@@ -67,14 +97,12 @@ class Order(db.Model):
     order_id = db.Column(db.Integer,
                         autoincrement=True,
                         primary_key=True)
-    # card_id = db.Column(db.Integer, db.ForeignKey("cards.card_id"))
     user_card_id = db.Column(db.Integer, db.ForeignKey("user_cards.user_card_id"))
-    # seller_id = db.Column(db.Integer, db.ForeignKey("users.user_id"))
     user_id = db.Column(db.Integer, db.ForeignKey("users.user_id"))
     listed = db.Column(db.DateTime, nullable=False)
     purchased = db.Column(db.DateTime, nullable=False)
     
-    user_card = db.relationship("UserCard", backref="orders")
+    user_card = db.relationship("UserCard", backref="order")
     user = db.relationship("User", backref="orders")
 
     def __repr__(self):
@@ -94,8 +122,7 @@ class ShoppingCart(db.Model):
     user_card_id = db.Column(db.Integer, db.ForeignKey("user_cards.user_card_id"))
 
     user = db.relationship("User", backref="shopping_cart")
-    #should user_card be plural?
-    user_card = db.relationship("UserCard", backref="shopping_cart")
+    user_cards = db.relationship("UserCard", backref="shopping_carts")
     
     def __repr__(self):
         return f'<Shopping cart shopping_cart_id={self.shopping_cart_id} user_id={self.user_id} user_card_id={self.user_card_id}>'

@@ -2,17 +2,31 @@
     {
       "pokemon_name": "Charmander",
       "card_name": "Blaine's Charmander",
-      "types": "Fire",
       "rules": "Discard 1 Energy card attached to Blaine's Charmander in order to use this attack. If the Defending Pokémon has any Energy cards attached to it, choose 1 of them and discard it.",
       "price": 2,
       "image_path": "This is a pic"
     },
     {
       "pokemon_name": "Jigglypuff",
-      "card_name": "Erika's Jigglypuff",
-      "types": "Normal, Fairy",
+      "card_name": "Erika's Jigglypuffffffff",
       "rules": "You and your opponent remove 1 damage counter from each of your Pokémon with damage counters on them.",
       "price": 2.5,
+      "image_path": "This is another pic"
+    },
+
+    {
+      "pokemon_name": "Koffing",
+      "card_name": "Team Rocket's Koffing",
+      "rules": "You and your opponent remove 1 damage counter from each of your Pokémon with damage counters on them.",
+      "price": 3,
+      "image_path": "This is another pic"
+    },
+
+    {
+      "pokemon_name": "Meowth",
+      "card_name": "Shiney Meowth",
+      "rules": "You and your opponent remove 1 damage counter from each of your Pokémon with damage counters on them.",
+      "price": 3.5,
       "image_path": "This is another pic"
     }
   ]

@@ -10,10 +10,10 @@ def create_user(name, email, password):
 
     return user
 
-def create_card(pokemon_name, card_name, types, rules, price, image_path):
+def create_card(pokemon_name, card_name, rules, price, image_path):
     """Create and return a new card."""
 
-    card = Card(pokemon_name=pokemon_name,card_name=card_name, types=types, rules=rules, price=price, image_path=image_path)
+    card = Card(pokemon_name=pokemon_name,card_name=card_name, rules=rules, price=price, image_path=image_path)
 
     return card
 
@@ -58,10 +58,6 @@ def get_card_by_card_name(card_name):
 
     return Card.query.get(card_name)
 
-def get_cards_by_types(types):
-    '''get cards by types.'''
-
-    return Card.query.get(types).all()
 
 def get_cards_by_price(price):
     '''get cards by price.'''
@@ -91,7 +87,17 @@ def get_user_cards():
 def get_user_cards_by_user(user_id):
     '''get user cards by user id.'''
 
-    return UserCard.query.get(user_id).all()
+    return UserCard.query.get(user_id)
+
+def get_user_cards_by_card(card_id):
+    '''get user cards by card id.'''
+
+    return UserCard.query.get(card_id)
+
+def get_user_card_by_id(user_card_id):
+    '''get user card by id.'''
+
+    return UserCard.query.get(user_card_id)
 
 def get_orders():
     '''Return all orders.'''
@@ -102,11 +108,6 @@ def get_order_by_id(order_id):
     '''get order by id'''
 
     return Order.query.get(order_id)
-
-def get_shopping_carts():
-    """Return all shopping carts."""
-
-    return ShoppingCart.query.all()
 
 def get_shopping_cart_by_user_id(user_id):
     '''get shopping cart by user id.'''

@@ -20,16 +20,15 @@ with open("data/cards.json") as f:
 
 cards_in_db = []
 for card in card_data:
-    pokemon_name, card_name, types, rules, price, image_path = (
+    pokemon_name, card_name, rules, price, image_path = (
         card["pokemon_name"],
         card["card_name"],
-        card["types"],
         card["rules"],
         card["price"],
         card["image_path"]
     )
     
-    db_card = crud.create_card(pokemon_name, card_name, types, rules, price, image_path)
+    db_card = crud.create_card(pokemon_name, card_name, rules, price, image_path)
     cards_in_db.append(db_card)
 
 model.db.session.add_all(cards_in_db)
@@ -46,7 +45,7 @@ for n in range(10):
     user = crud.create_user(name, email, password)
     model.db.session.add(user)
 
-    for n2 in range(2):
+    for n2 in range(4):
         random_card = choice(cards_in_db)
 
         user_card = crud.create_user_card(user, random_card)
