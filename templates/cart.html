@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+    <table class="table table-striped mt-3">
+        <thead>
+        <tr>
+            <th>Card Name</th>
+            <th>Price</th>
+            <th>Total</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for melon in cart %}
+        <tr>
+            <td>{{ usercard.card.card_name }}</td>
+            <td>${{ "%0.2f" | format(usercard.card.price) }}</td>
+           
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <h3>Total: ${{ "%0.2f" | format(order_total) }}</h3>
+
+    <a href="/checkout" class="btn btn-large btn-primary">Check Out</a>
+
+{% endblock %}

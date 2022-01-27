@@ -14,17 +14,17 @@
 </p>
 
 <p>
-  Price: {{ usercard.card.price }}
+  Price: ${{ usercard.card.price }}
 </p>
 
 <p>
   Seller: {{ usercard.user.name }}
 </p>
 
-<form action="/shopping_cart" method="POST">
+<form action="/cart" method="POST">
 
   <p>
-    <button type="button">ADD TO CART</button>
+    <a class="btn btn-primary" href="/add_to_cart/{{ usercard.user_card_id }}">Add to cart</a>
   </p>
 </form>
 

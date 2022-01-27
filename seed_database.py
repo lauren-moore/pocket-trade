@@ -45,18 +45,12 @@ for n in range(10):
     user = crud.create_user(name, email, password)
     model.db.session.add(user)
 
-    for n2 in range(4):
+    for n2 in range(2):
         random_card = choice(cards_in_db)
 
         user_card = crud.create_user_card(user, random_card)
         model.db.session.add(user_card)
 
-    for shoppingcart in range(1):
-        shopping_cart = crud.create_shopping_cart(user, user_card)
-        model.db.session.add(shopping_cart)
-
-    for order in range(1):
-        order = crud.create_order(user_card, user, listed=datetime.today(), purchased=datetime.today())
 
 model.db.session.commit()
 

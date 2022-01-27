@@ -3,13 +3,15 @@
 
 
 {% block body %}
-  <h1>All UserCards</h1>
+  <h1>{{ card.card_name }}</h1>
 
   <ul>
     {% for usercard in usercards %}
+        {% if usercard.card_id == card.card_id %}
       <li>
-        <a href="/cards/{{ usercard.user_card_id }}">UserCard #{{ usercard.user_card_id }} </a>
+        <a href="/cards/{{ usercard.user_card_id }}">Sold by: {{ usercard.user.name }} </a>
       </li>
+        {% endif %}
     {% endfor %}
   </ul>
 {% endblock %}
