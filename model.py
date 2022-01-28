@@ -36,6 +36,8 @@ class Card(db.Model):
     price = db.Column(db.Integer, nullable=False)
     image_path = db.Column(db.String, nullable=False)
     
+    types = db.relationship("Types", secondary="card_types", backref="cards")
+
     def __repr__(self):
         return f'<Card card_id={self.card_id} pokemon_name={self.pokemon_name} card_name={self.card_name} price={self.price}>'
 
@@ -58,7 +60,7 @@ class Types(db.Model):
 class CardTypes(db.Model):
     """Types belonging to specific Pokemon"""
 
-    tablename = "cardtypes"
+    tablename = "card_types"
 
     cardtype_id = db.Column(db.Integer,
                         autoincrement=True,

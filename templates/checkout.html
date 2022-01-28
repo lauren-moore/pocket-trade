@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}Check Out{% endblock %}
+
+{% block body %}
+  <h1>Check Out</h1>
+  <p></p>
+
+  <h2>Card Payment</h2>
+  <p></p>
+  <form action="/checkout" method="POST">
+    <p>
+      Card Number: <input type="text" name="card_number">
+    </p>
+
+    <p>
+      Expiration Date: <input type="text" name="exp">
+    </p>
+
+    <p>
+        CVV: <input type="text" name="exp">
+    </p>
+
+    <p>
+      <input type="submit">
+    </p>
+  </form>
+{% endblock %}

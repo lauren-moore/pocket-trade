@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}My Collection{% endblock %}
+
+{% block body %}
+{% if session["user_name"] %}
+  <h1>{{ session["user_name"] }}'s Cards</h1>
+{% endif %}
+        
+  <ul>
+    {% for usercard in usercards %}
+        {% if usercard.user_id == session["user_id"] %}
+      <li>
+        <a href="/cards/{{ usercard.user_card_id }}">{{ session["user_name"] }} </a>
+      </li>
+        {% endif %}
+    {% endfor %}
+  </ul>
+{% endblock %}

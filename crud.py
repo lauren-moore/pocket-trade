@@ -1,6 +1,6 @@
 """CRUD operations."""
 
-from model import db, User, Card, UserCard, Order, ShoppingCart, connect_to_db
+from model import db, User, Card, UserCard, Order, Types, ShoppingCart, connect_to_db
 
 
 def create_user(name, email, password):
@@ -17,12 +17,26 @@ def create_card(pokemon_name, card_name, rules, price, image_path):
 
     return card
 
+def create_card_type(card, type_name):
+    """Create the relationship between cards and types."""
+
+    card_type = CardType(card=card, type_name=type_name)
+
+    return card_type
+
 def create_user_card(user, card):
     """Add a user to an existing card."""
 
     user_card = UserCard(user=user, card=card, sold=False)
 
     return user_card
+
+def create_type(type_name):
+    """Create and return a Pokemon type."""
+
+    type_name = Types(type_name=type_name)
+
+    return type_name
 
 def create_order(user_card, user, listed, purchased):
     """Create and return a new rating."""
@@ -113,6 +127,8 @@ def get_shopping_cart_by_user_id(user_id):
     '''get shopping cart by user id.'''
 
     return ShoppingCart.query.get(user_id)
+
+
 
 if __name__ == '__main__':
     from server import app

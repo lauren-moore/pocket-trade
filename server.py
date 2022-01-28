@@ -63,11 +63,31 @@ def all_users():
     return render_template('all_users.html', users=users)
 
 
+@app.route('/collection')
+def show_my_collection(user_id):
+    """View user's collection."""
+
+    my_collection = []
+
+    collection = session.get("collection", {})
+
+    for user_card_id, user_id in collection.items():
+        usercard = crud.get_user_card_by_user(user_id)
+
+        my_collection.append(usercard)
+
+    user_id = session["user_id"]
+    usercards = crud.get_user_cards_by_user(user_id)
+    user = crud.get_user_by_id(user_id)
+
+    return render_template('my_collection.html', user=user, usercards=usercards)
+
 @app.route('/cards/<user_card_id>')
 def show_card(user_card_id):
     """Show card details."""
 
     usercard = crud.get_user_card_by_id(user_card_id)
+    
 
     return render_template('card_details.html', usercard=usercard)
 
@@ -92,7 +112,7 @@ def show_shopping_cart():
 
     for user_card_id, quantity in cart.items():
         usercard = crud.get_user_card_by_id(user_card_id)
-
+        
         order_total += usercard.card.price
 
         shopping_cart.append(usercard)
@@ -100,7 +120,7 @@ def show_shopping_cart():
     return render_template("cart.html",
                            cart=cart,
                            order_total=order_total,
-                           usercard=usercard)
+                           shopping_cart=shopping_cart)
 
 
 @app.route("/add_to_cart/<user_card_id>")
@@ -150,13 +170,29 @@ def process_login():
     user = crud.get_user_by_email(email)
     if not user or user.password != password:
         flash("The email or password you entered was incorrect.")
+
+        return redirect(request.referrer)
+
     else:
-        session["user_name"] = user.name
+        session["user_email"] = user.email
+        # session["user_id"] = user.user_id
         flash(f"Welcome back, {user.name.title()}!")
 
+        return redirect("/")
+
+@app.route("/logout")
+def process_logout():
+    """Log user out."""
+
+    del session["user_email"]
+    flash("Logged out.")
     return redirect("/")
 
+@app.route("/checkout")
+def checkout():
+    """Checkout customer and process payment."""
 
+    return render_template('checkout.html')
 
 if __name__ == "__main__":
     # DebugToolbarExtension(app)

@@ -1,31 +1,40 @@
 {% extends 'base.html' %}
 
-{% block title %} Card Info {% endblock %}
-
 {% block body %}
-<h1>{{ usercard.card.pokemon_name }}</h1>
 
-<p>
-  Card: {{ usercard.card.card_name }}
-</p>
+    <h2 class="mt-3">{{ usercard.card.pokemon_name }}</h2>
 
-<p>
-  Rules: {{ usercard.card.rules }}
-</p>
+    <div class="row">
 
-<p>
-  Price: ${{ usercard.card.price }}
-</p>
+        <div class="col-6">
+            <img src="/static/img/koffing.png"
+                  width="400"
+                  height="400">
+        </div>
 
-<p>
-  Seller: {{ usercard.user.name }}
-</p>
+        <div class="col-3">
+            <div class="card text-center bg-light">
+                <div class="card-body">
+                    <h5 class="card-title">Price</h5>
+                    <div class="card-text">${{ usercard.card.price }}</div>
+                    <p></p>
+                    <form action="/cart" method="POST">
+                      <a class="btn btn-primary" href="/add_to_cart/{{ usercard.user_card_id }}">Add to cart</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
-<form action="/cart" method="POST">
+    <div class="card-details">
 
-  <p>
-    <a class="btn btn-primary" href="/add_to_cart/{{ usercard.user_card_id }}">Add to cart</a>
-  </p>
-</form>
+        <h3>Card Details</h3>
+
+        <ul>
+            <li>Card: {{ usercard.card.card_name }}</li>
+            <li>Type: {{ usercard.card.cardtypes }}</li>
+            <li>Seller: {{ usercard.user.name }}</li>
+        </ul>
+    </div>
 
 {% endblock %}

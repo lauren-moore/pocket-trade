@@ -7,11 +7,10 @@
         <tr>
             <th>Card Name</th>
             <th>Price</th>
-            <th>Total</th>
         </tr>
         </thead>
         <tbody>
-        {% for melon in cart %}
+        {% for usercard in shopping_cart %}
         <tr>
             <td>{{ usercard.card.card_name }}</td>
             <td>${{ "%0.2f" | format(usercard.card.price) }}</td>
