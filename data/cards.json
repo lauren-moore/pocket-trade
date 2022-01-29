@@ -5,7 +5,7 @@
       "type_name": ["Fire"],
       "rules": "Discard 1 Energy card attached to Blaine's Charmander in order to use this attack. If the Defending Pokémon has any Energy cards attached to it, choose 1 of them and discard it.",
       "price": 2,
-      "image_path": "This is a pic"
+      "image_path": "charmander.png"
     },
     {
       "pokemon_name": "Jigglypuff",
@@ -13,7 +13,7 @@
       "type_name": ["Fairy", "Normal"],
       "rules": "You and your opponent remove 1 damage counter from each of your Pokémon with damage counters on them.",
       "price": 2.5,
-      "image_path": "This is another pic"
+      "image_path": "jigglypuff.png"
     },
 
     {
@@ -22,7 +22,7 @@
       "type_name": ["Poison"],
       "rules": "You and your opponent remove 1 damage counter from each of your Pokémon with damage counters on them.",
       "price": 3,
-      "image_path": "This is another pic"
+      "image_path": "koffing.png"
     },
 
     {
@@ -31,7 +31,45 @@
       "type_name": ["Normal"],
       "rules": "You and your opponent remove 1 damage counter from each of your Pokémon with damage counters on them.",
       "price": 3.5,
-      "image_path": "This is another pic"
+      "image_path": "meowth.png"
+    },
+    
+     {
+      "pokemon_name": "Diglett",
+      "card_name": "Brock's Diglett",
+      "type_name": ["Ground"],
+      "rules": "You and your opponent remove 1 damage counter from each of your Pokémon with damage counters on them.",
+      "price": 1.5,
+      "image_path": "diglett.png"
+    },
+
+    {
+      "pokemon_name": "Sandshrew",
+      "card_name": "Brock's Sandshrew",
+      "type_name": ["Ground"],
+      "rules": "You and your opponent remove 1 damage counter from each of your Pokémon with damage counters on them.",
+      "price": 1.5,
+      "image_path": "sandshrew.png"
+    },
+
+    {
+      "pokemon_name": "Seel",
+      "card_name": "Misty's Seel",
+      "type_name": ["Water"],
+      "rules": "You and your opponent remove 1 damage counter from each of your Pokémon with damage counters on them.",
+      "price": 1.5,
+      "image_path": "seel.png"
+    },
+
+    {
+      "pokemon_name": "Ponyta",
+      "card_name": "Ponyta",
+      "type_name": ["Fire"],
+      "rules": "You and your opponent remove 1 damage counter from each of your Pokémon with damage counters on them.",
+      "price": 4,
+      "image_path": "Ponyta.png"
     }
-  ]
+  
+]
+   
   

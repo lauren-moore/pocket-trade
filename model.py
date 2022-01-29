@@ -51,10 +51,10 @@ class Types(db.Model):
                         autoincrement=True,
                         primary_key=True,
                         nullable=False)
-    name = db.Column(db.String, nullable=False, unique=True)
+    type_name = db.Column(db.String, nullable=False, unique=True)
 
     def __repr__(self):
-        return f'<Types_id={self.types_id} type={self.name}>'
+        return f'<Types_id={self.types_id} type={self.type_name}>'
 
 
 class CardTypes(db.Model):
@@ -69,8 +69,8 @@ class CardTypes(db.Model):
     types_id = db.Column(db.Integer, db.ForeignKey("types.types_id"))
     card_id = db.Column(db.Integer, db.ForeignKey("cards.card_id"))
 
-    card = db.relationship("Card", backref="cardtypes")
-    types = db.relationship("Types", backref="cardtypes")
+    # card = db.relationship("Card", backref="cardtypes")
+    # types = db.relationship("Types", backref="cardtypes")
 
 
 class UserCard(db.Model):

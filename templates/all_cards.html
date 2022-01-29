@@ -7,9 +7,11 @@
 
   <ul>
     {% for card in cards %}
-      <li>
-        <a href="/usercards/{{ card.card_id }}">{{ card.card_name }} </a>
-      </li>
+    <div class="flex-container">
+      <div class="flex-child poke">
+        <a href="/usercards/{{ card.card_id }}"><img src="/static/img/koffingcard.png" alt="photo"></a>
+        <!-- <a href="/usercards/{{ card.card_id }}">{{ card.card_name }}</a> -->
+      </div>
     {% endfor %}
   </ul>
 {% endblock %}
