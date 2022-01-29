@@ -20,9 +20,6 @@ def homepage():
 def log_in():
     """Log in page."""
 
-    email = request.form.get("email")
-    password = request.form.get("password")
-
     return render_template('login.html')
 
 
@@ -54,34 +51,6 @@ def all_usercards(card_id):
                             card=card)
 
 
-@app.route('/users')
-def all_users():
-    """View users page."""
-
-    users = crud.get_users()
-
-    return render_template('all_users.html', users=users)
-
-
-@app.route('/collection')
-def show_my_collection(user_id):
-    """View user's collection."""
-
-    my_collection = []
-
-    collection = session.get("collection", {})
-
-    for user_card_id, user_id in collection.items():
-        usercard = crud.get_user_card_by_user(user_id)
-
-        my_collection.append(usercard)
-
-    user_id = session["user_id"]
-    usercards = crud.get_user_cards_by_user(user_id)
-    user = crud.get_user_by_id(user_id)
-
-    return render_template('my_collection.html', user=user, usercards=usercards)
-
 @app.route('/cards/<user_card_id>')
 def show_card(user_card_id):
     """Show card details."""
@@ -92,13 +61,38 @@ def show_card(user_card_id):
     return render_template('card_details.html', usercard=usercard)
 
 
+@app.route('/users')
+def all_users():
+    """View users page."""
+
+    users = crud.get_users()
+
+    return render_template('all_users.html', users=users)
+
+
 @app.route('/users/<user_id>')
+@app.route('/collection/<user_id>')
 def show_user(user_id):
     """Show user details."""
 
     user = crud.get_user_by_id(user_id)
+    usercards = crud.get_user_cards()
+    card = crud.get_cards()
 
-    return render_template('user_details.html', user=user)
+    return render_template('user_details.html', user=user, usercards=usercards, card=card)
+
+
+
+# @app.route('/collection/<user_id>')
+# def show_coll(user_id):
+#     """Show user details."""
+
+#     user = crud.get_user_by_id(user_id)
+#     usercards = crud.get_user_cards()
+#     card = crud.get_cards()
+
+#     return render_template('user_details.html', usercards=usercards, user=user)
+
 
 
 @app.route("/cart")
@@ -175,7 +169,7 @@ def process_login():
 
     else:
         session["user_email"] = user.email
-        # session["user_id"] = user.user_id
+        session["user_id"] = user.user_id
         flash(f"Welcome back, {user.name.title()}!")
 
         return redirect("/")
@@ -193,6 +187,55 @@ def checkout():
     """Checkout customer and process payment."""
 
     return render_template('checkout.html')
+
+# @app.route("/collection")
+# def show_collection():
+#     """Display content of shopping cart."""
+
+#     my_coll = []
+
+#     collection = session.get("collection", {})
+
+#     for user_id, quantity in collection.items():
+#         usercards = crud.get_user_cards_by_user(user_id)
+
+#         my_coll.append(usercards)    
+
+#     return render_template("my_collection.html",
+#                             usercard=usercards,
+#                            my_coll=my_coll,
+#                            collection=collection)
+
+
+# @app.route('/collection/<user_id>')
+# def show_my_collection(user_id):
+#     """View user's collection."""
+
+#     my_collection = []
+
+#     if 'collection' in session:
+#         collection = session['collection']
+#     else:
+#         collection = session['collection'] = {}
+
+#     # collection = session.get("collection", {})
+#     collection[user_id] = collection.get(user_id, 0) + 1
+
+#     for user_id in collection.items():
+#         usercard = crud.get_user_cards_by_user(user_id)
+
+#         my_collection.append(usercard)
+
+#     user_id = session["user_id"]
+#     usercards = crud.get_user_cards_by_user(user_id)
+#     user = crud.get_user_by_id(user_id)
+
+#     return render_template('my_collection.html', user=user, usercards=usercards)
+
+
+
+
+
 
 if __name__ == "__main__":
     # DebugToolbarExtension(app)

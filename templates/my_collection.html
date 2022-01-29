@@ -1,4 +1,44 @@
 {% extends 'base.html' %}
+
+{% block title %} {{user.name}}'s Cards {% endblock %}
+
+{% block body %}
+<h1>{{user.name}}'s Cards</h1>
+
+
+<ul>
+  {% for usercard in usercards %}
+  <div class="flex-container">
+    <div class="flex-child poke">
+      <a href="/usercards/{{ card.card_id }}"><img src="/static/img/koffingcard.png" alt="photo"></a>
+      <!-- <a href="/usercards/{{ card.card_id }}">{{ card.card_name }}</a> -->
+    </div>
+  {% endfor %}
+</ul>
+{% endblock %}
+
+<p>
+  The user email is {{ user.email }}
+</p>
+
+
+<p>
+    The user ID is {{ user.user_id }}
+  </p>
+  
+
+
+  <p>
+    The password is {{ user.password }}
+  </p>
+  
+
+{% endblock %}
+
+
+
+
+<!-- {% extends 'base.html' %}
 {% block title %}My Collection{% endblock %}
 
 {% block body %}
@@ -15,4 +55,4 @@
         {% endif %}
     {% endfor %}
   </ul>
-{% endblock %}
+{% endblock %} -->
