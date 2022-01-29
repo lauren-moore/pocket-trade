@@ -3,32 +3,31 @@
 } */
 
 
-/* .flex-container{
+.flex-container{
   display:grid;
   height:100px;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: .02fr 1.5fr 1.2fr 0.8fr;
-} */
+}
 
-/* .flex-container{
+.flex-container{
   height: 300px;
   width: 300px;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-} */
+}
 
 /* .flex-container > * {
   flex-basis: 50%
 } */
 
 /* .flex-container {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  margin: 0 50px;
-  padding: 30px;
-} */
+  /* display: flex;
+  flex-wrap: wrap; */
+  /* height:100px;
+  width:100px;
+} */ 
 
 /* .photo {
   max-width: 31.333%;

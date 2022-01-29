@@ -5,7 +5,7 @@
       "type_name": ["Fire"],
       "rules": "Discard 1 Energy card attached to Blaine's Charmander in order to use this attack. If the Defending Pokémon has any Energy cards attached to it, choose 1 of them and discard it.",
       "price": 2,
-      "image_path": "charmander.png"
+      "image_path": "https://52f4e29a8321344e30ae-0f55c9129972ac85d6b1f4e703468e6b.ssl.cf2.rackcdn.com/products/pictures/1068980.jpg"
     },
     {
       "pokemon_name": "Jigglypuff",
@@ -13,16 +13,16 @@
       "type_name": ["Fairy", "Normal"],
       "rules": "You and your opponent remove 1 damage counter from each of your Pokémon with damage counters on them.",
       "price": 2.5,
-      "image_path": "jigglypuff.png"
+      "image_path": "https://assets.pokemon.com/assets/cms2/img/cards/web/SM4/SM4_EN_71.png"
     },
-
+    
     {
       "pokemon_name": "Koffing",
       "card_name": "Team Rocket's Koffing",
       "type_name": ["Poison"],
       "rules": "You and your opponent remove 1 damage counter from each of your Pokémon with damage counters on them.",
       "price": 3,
-      "image_path": "koffing.png"
+      "image_path": "https://assets.pokemon.com/assets/cms2/img/cards/web/SM115/SM115_EN_28.png"
     },
 
     {
@@ -31,7 +31,7 @@
       "type_name": ["Normal"],
       "rules": "You and your opponent remove 1 damage counter from each of your Pokémon with damage counters on them.",
       "price": 3.5,
-      "image_path": "meowth.png"
+      "image_path": "https://assets.pokemon.com/assets/cms2/img/cards/web/SM9/SM9_EN_125.png"
     },
     
      {
@@ -40,7 +40,7 @@
       "type_name": ["Ground"],
       "rules": "You and your opponent remove 1 damage counter from each of your Pokémon with damage counters on them.",
       "price": 1.5,
-      "image_path": "diglett.png"
+      "image_path": "https://assets.pokemon.com/assets/cms2/img/cards/web/XY1/XY1_EN_58.png"
     },
 
     {
@@ -49,7 +49,7 @@
       "type_name": ["Ground"],
       "rules": "You and your opponent remove 1 damage counter from each of your Pokémon with damage counters on them.",
       "price": 1.5,
-      "image_path": "sandshrew.png"
+      "image_path": "https://52f4e29a8321344e30ae-0f55c9129972ac85d6b1f4e703468e6b.ssl.cf2.rackcdn.com/products/pictures/149435.jpg"
     },
 
     {
@@ -58,7 +58,7 @@
       "type_name": ["Water"],
       "rules": "You and your opponent remove 1 damage counter from each of your Pokémon with damage counters on them.",
       "price": 1.5,
-      "image_path": "seel.png"
+      "image_path": "https://assets.pokemon.com/assets/cms2/img/cards/web/XY10/XY10_EN_15.png"
     },
 
     {
@@ -67,7 +67,7 @@
       "type_name": ["Fire"],
       "rules": "You and your opponent remove 1 damage counter from each of your Pokémon with damage counters on them.",
       "price": 4,
-      "image_path": "Ponyta.png"
+      "image_path": "https://i.ebayimg.com/images/g/sFIAAOSwko5gxjl~/s-l400.jpg"
     }
   
 ]

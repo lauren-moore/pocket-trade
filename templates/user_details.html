@@ -5,32 +5,33 @@
 {% block body %}
 <h1>{{ user.name }}'s Cards</h1>
 
-<ul>
-  {% for usercard in usercards %}
-    {% if usercard.user_id == user.user_id %}
-    <div class="flex-container">
-      <div class="flex-child poke">
-    <!-- <a href="/cards/{{ usercard.user_card_id }}">Sold by: {{ usercard.user.name }} </a> -->
-    <a href="/cards/{{ usercard.user_card_id }}"><img src="/static/img/koffingcard.png" alt="photo"></a>
-      </div>
-    {% endif %}
-  {% endfor %}
-</ul>
 
-<p>
-  The user email is {{ user.email }}
-</p>
-
-
-<p>
-    The user ID is {{ user.user_id }}
-  </p>
-  
+<div class="row">
+  <div class="col-6">
+    <ul>
+      {% for usercard in usercards %}
+        {% if usercard.user_id == user.user_id %}
+        <div class="flex-container">
+          <div class="flex-child poke">
+        <!-- <a href="/cards/{{ usercard.user_card_id }}">Sold by: {{ usercard.user.name }} </a> -->
+        <a href="/cards/{{ usercard.user_card_id }}"><img src="{{ usercard.card.image_path}}" alt="photo"></a>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </div>
 
 
-  <p>
-    The password is {{ user.password }}
-  </p>
-  
+  <div class="col-3">
+    <div class="card text-left bg-light">
+        <div class="card-body">
+          <ul>
+            <li>Seller: {{ user.name }}</li>
+            <li>Email: {{ user.email }}</li>
+          </ul>
+        </div>
+    </div>
+  </div>
+</div>
 
 {% endblock %}

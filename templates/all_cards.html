@@ -9,7 +9,7 @@
     {% for card in cards %}
     <div class="flex-container">
       <div class="flex-child poke">
-        <a href="/usercards/{{ card.card_id }}"><img src="/static/img/koffingcard.png" alt="photo"></a>
+        <a href="/usercards/{{ card.card_id }}"><img src="{{ card.image_path }}" height=250px alt="photo"></a>
         <!-- <a href="/usercards/{{ card.card_id }}">{{ card.card_name }}</a> -->
       </div>
     {% endfor %}
