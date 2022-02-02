@@ -10,6 +10,7 @@ app.secret_key = "dev"
 app.jinja_env.undefined = StrictUndefined
 
 
+@app.route('/login')
 @app.route('/')
 def homepage():
     """View homepage."""
@@ -17,11 +18,11 @@ def homepage():
     return render_template('homepage.html')
 
 
-@app.route('/login')
-def log_in():
-    """Log in page."""
+# @app.route('/login')
+# def log_in():
+#     """Log in page."""
 
-    return render_template('login.html')
+#     return render_template('login.html')
 
 
 @app.route("/create-account")
@@ -148,6 +149,7 @@ def create_order():
     if user_logged_in is None:
         flash("Please log in to trade cards.")
         return redirect("/login")
+        
     else:
         for user_card_id, _quantity in shopping_cart.items():
             usercard = crud.get_user_card_by_id(user_card_id)
@@ -199,13 +201,15 @@ def process_login():
         session["user_id"] = user.user_id
         flash(f"Welcome back, {user.name.title()}!")
 
+
         return redirect("/")
+
+
 
 @app.route("/logout")
 def process_logout():
     """Log user out."""
 
-    # del session["user_email"]
     del session["user_id"] 
     flash("Logged out.")
     return redirect("/")
