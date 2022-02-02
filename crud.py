@@ -20,7 +20,7 @@ def create_card(pokemon_name, card_name, rules, price, image_path):
 def create_card_type(card, type_name):
     """Create the relationship between cards and types."""
 
-    card_type = CardType(card=card, type_name=type_name)
+    card_type = Types(card=card, type_name=type_name)
 
     return card_type
 

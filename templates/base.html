@@ -20,8 +20,9 @@
           <div class="collapse navbar-collapse">
               <div class="navbar-nav">
                   
+                  <a class="nav-link" href="/cards">Browse</a>
                   <a class="nav-link" href="/cart">My Cart</a>
-                  {% if not session %}
+                  {% if 'user_id' not in session %}
                     <a class="nav-link" href="/login">Log In</a>
                     <a class="nav-link" href="/create-account">Register</a>
                   {% else %}

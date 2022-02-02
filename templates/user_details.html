@@ -26,8 +26,22 @@
     <div class="card text-left bg-light">
         <div class="card-body">
           <ul>
+            {% if user.user_id != session['user_id'] %}
             <li>Seller: {{ user.name }}</li>
             <li>Email: {{ user.email }}</li>
+            {% else %}
+            <h4>{{ user.name }}</h4>
+            <img src="/static/img/jigglypuff.png" width=75%>
+            <p></p>
+            <h6>Email: {{ user.email }}</h6>
+            <h6>Collected Cards: {{ count_of_cards }}</h6>
+            
+            {% endif %}
+            <p></p>
+            <p></p>
+            <p></p>
+          
+            
           </ul>
         </div>
     </div>
