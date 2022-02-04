@@ -10,13 +10,17 @@
         </tr>
         </thead>
         <tbody>
-        {% for usercard in shopping_cart %}
-        <tr>
-            <td>{{ usercard.card.card_name }}</td>
-            <td>${{ "%0.2f" | format(usercard.card.price) }}</td>
-           
-        </tr>
-        {% endfor %}
+        {% if usercard not in shopping_cart %}
+        <td>Your shopping cart is currently empty</td>
+        {% else %}
+            {% for usercard in shopping_cart %}
+            <tr>
+                <td>{{ usercard.card.card_name }}</td>
+                <td>${{ "%0.2f" | format(usercard.card.price) }}</td>
+            
+            </tr>
+            {% endfor %}
+        {% endif %}
         </tbody>
     </table>
 
