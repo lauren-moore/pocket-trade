@@ -4,11 +4,13 @@ from model import db, connect_to_db
 from jinja2 import StrictUndefined
 import crud
 from datetime import date
+import requests
 
 app = Flask(__name__)
 app.secret_key = "dev"
 app.jinja_env.undefined = StrictUndefined
 
+# API_KEY = os.environ['POKEMONTCG_KEY']
 
 @app.route('/login')
 @app.route('/')
@@ -16,13 +18,6 @@ def homepage():
     """View homepage."""
 
     return render_template('homepage.html')
-
-
-# @app.route('/login')
-# def log_in():
-#     """Log in page."""
-
-#     return render_template('login.html')
 
 
 @app.route("/create-account")
@@ -39,6 +34,34 @@ def all_cards():
     cards = crud.get_cards()
 
     return render_template('all_cards.html', cards=cards)
+
+
+
+# @app.route('/cards/search')
+# def find_cards():
+#     """Search for cards on Pokemon TCG"""
+
+#     q = request.args.get('query', '')
+#     page = request.args.get('page', '')
+#     pagesize = request.args.get('pagesize', '')
+
+#     url = 'https://api.pokemontcg.io/v2/cards'
+#     payload = {'apikey': API_KEY,
+#                 'nationalPokedexNumbers' : [1],
+#                'q': q,
+#                'page': page,
+#                'pageSize': pagesize}
+
+#     response = requests.get(url, params=payload)
+
+#     data = response.json()
+#     cards = data['cards']
+
+#     return render_template('search-results.html',
+#                            pformat=pformat,
+#                            data=data,
+#                            results=cards)
+
 
 
 @app.route('/usercards/<card_id>')
@@ -152,10 +175,24 @@ def create_order():
         
     else:
         for user_card_id, _quantity in shopping_cart.items():
+
+            #get usercard object
             usercard = crud.get_user_card_by_id(user_card_id)
+
+            #create new order
             order = crud.create_order(usercard, user, date.today(), date.today())
             db.session.add(order)
+
+            #update existing usercard
+            update = crud.update_user_card(user_card_id)
+            db.session.add(update)
+
+            #create new uesrcard assigned to user logged in
+            new_usercard = crud.create_user_card(user, usercard.card)
+            db.session.add(new_usercard)
+
         db.session.commit()
+        del session["cart"]
 
     flash("Your order has been processed!")
 
@@ -200,8 +237,6 @@ def process_login():
         session["user_email"] = user.email
         session["user_id"] = user.user_id
         flash(f"Welcome back, {user.name.title()}!")
-
-
         return redirect("/")
 
 
@@ -212,9 +247,8 @@ def process_logout():
 
     del session["user_id"] 
     flash("Logged out.")
+
     return redirect("/")
-
-
 
 
 

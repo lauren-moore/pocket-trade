@@ -2,13 +2,14 @@
 {% block title %}Login{% endblock %}
 {% block modal %}
 
-<form action="/login" method="POST">
+
 <!-- Button trigger modal -->
-  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
     Log In
-  </button>
+  </button> -->
 
   <!-- Modal -->
+  <form action="/login" method="POST"></form>
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -35,13 +36,7 @@
   </div>
   </form>
 {% endblock %}
-{% block script %}
-<script>
-$(document).ready(function(){
-  $("exampleModal").modal("show")
-})
-</script>
-{% endblock %}
+
 
 
 <!-- //  <h2>Log In</h2>

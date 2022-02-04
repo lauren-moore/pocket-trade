@@ -7,7 +7,7 @@
 
   <ul>
     {% for usercard in usercards %}
-        {% if usercard.card_id == card.card_id %}
+        {% if usercard.card_id == card.card_id and usercard.sold == False %}
       <li>
         <a href="/cards/{{ usercard.user_card_id }}">Sold by: {{ usercard.user.name }} </a>
       </li>

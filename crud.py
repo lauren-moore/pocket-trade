@@ -129,6 +129,13 @@ def get_shopping_cart_by_user_id(user_id):
     return ShoppingCart.query.get(user_id)
 
 
+def update_user_card(user_card_id):
+
+    user_card = UserCard.query.get(user_card_id)
+    user_card.sold = True
+
+    return user_card
+
 
 if __name__ == '__main__':
     from server import app
