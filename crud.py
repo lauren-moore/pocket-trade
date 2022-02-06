@@ -1,6 +1,6 @@
 """CRUD operations."""
 
-from model import db, User, Card, UserCard, Order, Types, ShoppingCart, connect_to_db
+from model import db, User, Card, UserCard, Order, Types, connect_to_db
 
 
 def create_user(name, email, password):
@@ -10,10 +10,10 @@ def create_user(name, email, password):
 
     return user
 
-def create_card(pokemon_name, card_name, rules, price, image_path):
+def create_card(name, price, image_path):
     """Create and return a new card."""
 
-    card = Card(pokemon_name=pokemon_name,card_name=card_name, rules=rules, price=price, image_path=image_path)
+    card = Card(name=name, price=price, image_path=image_path)
 
     return card
 
@@ -38,19 +38,12 @@ def create_type(type_name):
 
     return type_name
 
-def create_order(user_card, user, listed, purchased):
+def create_order(user_card, user, purchased):
     """Create and return a new rating."""
 
-    order = Order(user_card=user_card, user=user, listed=listed, purchased=purchased)
+    order = Order(user_card=user_card, user=user, purchased=purchased)
 
     return order
-
-def create_shopping_cart(user, user_card):
-    """Create and return a user's shopping cart."""
-
-    shopping_cart = ShoppingCart(user=user, user_card=user_card)
-
-    return shopping_cart
 
 def get_cards():
     """Return all cards."""
@@ -62,15 +55,10 @@ def get_card_by_id(card_id):
 
     return Card.query.get(card_id)
 
-def get_cards_by_pokemon_name(pokemon_name):
+def get_cards_by_name(name):
     '''get cards by Pokemon name.'''
 
-    return Card.query.get(pokemon_name).all()
-
-def get_card_by_card_name(card_name):
-    '''get card by card name.'''
-
-    return Card.query.get(card_name)
+    return Card.query.get(name).all()
 
 
 def get_cards_by_price(price):
@@ -98,43 +86,52 @@ def get_user_cards():
 
     return UserCard.query.all()
 
+
 def get_user_cards_by_user(user_id):
     '''get user cards by user id.'''
 
     return UserCard.query.get(user_id)
+
 
 def get_user_cards_by_card(card_id):
     '''get user cards by card id.'''
 
     return UserCard.query.get(card_id)
 
+
 def get_user_card_by_id(user_card_id):
     '''get user card by id.'''
 
     return UserCard.query.get(user_card_id)
+
 
 def get_orders():
     '''Return all orders.'''
 
     return Order.query.all()
 
+
 def get_order_by_id(order_id):
     '''get order by id'''
 
     return Order.query.get(order_id)
 
-def get_shopping_cart_by_user_id(user_id):
-    '''get shopping cart by user id.'''
-
-    return ShoppingCart.query.get(user_id)
-
 
 def update_user_card(user_card_id):
+    '''update usercard of previous owner.'''
 
     user_card = UserCard.query.get(user_card_id)
     user_card.sold = True
 
     return user_card
+
+
+def get_card_by_name(searched):
+    '''get cards that users search by name.'''
+
+    searched_cards = Card.query.filter(Card.name.ilike('%' + searched + '%')).all()
+
+    return (searched_cards)
 
 
 if __name__ == '__main__':

@@ -15,7 +15,7 @@
         {% else %}
             {% for usercard in shopping_cart %}
             <tr>
-                <td>{{ usercard.card.card_name }}</td>
+                <td>{{ usercard.card.name }}</td>
                 <td>${{ "%0.2f" | format(usercard.card.price) }}</td>
             
             </tr>

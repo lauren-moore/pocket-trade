@@ -15,22 +15,19 @@ os.system("createdb poke")
 model.connect_to_db(server.app)
 model.db.create_all()
 
-with open("data/cards.json") as f:
+with open("data/poke_cards.json") as f:
     card_data = json.loads(f.read())
 
-
 cards_in_db = []
-all_types = []
-for card in card_data:
-    pokemon_name, card_name, rules, price, image_path = (
-        card["pokemon_name"],
-        card["card_name"],
-        card["rules"],
-        card["price"],
-        card["image_path"]
-    )
+# all_types = []
+for card in card_data["data"]:
+    print('**************************')
+    print(card)
 
-    db_card = crud.create_card(pokemon_name, card_name, rules, price, image_path)
+    name = card["name"]
+    price = card["tcgplayer"]["prices"].get("normal", {}).get("holofoil")
+    image_path = card["images"]["large"]
+    db_card = crud.create_card(name, price, image_path)
     cards_in_db.append(db_card)
   
 #     for type_name in card_data:
@@ -44,12 +41,11 @@ for card in card_data:
 #     types_in_db.append(db_typename)
 
 model.db.session.add_all(cards_in_db)
-# model.db.session.add_all(types_in_db)
 model.db.session.commit()
 
 # 10 random users and cards
 
-for n in range(10):
+for n in range(100):
     name = f'Lauren {n}'
     email = f'user{n}@test.com' 
     password = 'test'

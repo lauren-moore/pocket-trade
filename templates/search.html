@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<h2>You searched for: <em>{{ searched }}</em> </h2>
+
+<div class="row">
+  <div class="col-6">
+    <ul>
+    {% if results %}
+    {% for card in results %}
+        <div class="col"></div>
+            <a href="/usercards/{{ card.card_id }}"><img src="{{ card.image_path }}"></a>
+    {% endfor %}
+
+    {% else %}
+    Your search term <strong>{{ searched }}</strong> was not found.
+    {% endif %}
+    </ul>
+    </div>
+</div>
+
+{% endblock %}

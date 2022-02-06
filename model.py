@@ -30,16 +30,15 @@ class Card(db.Model):
     card_id = db.Column(db.Integer,
                         autoincrement=True,
                         primary_key=True)
-    pokemon_name = db.Column(db.String, nullable=False)
-    card_name = db.Column(db.String, nullable=False, unique=True)
-    rules = db.Column(db.Text, nullable=False)
-    price = db.Column(db.Integer, nullable=False)
+    name = db.Column(db.String, nullable=False)
+    # flavor_text = db.Column(db.Text, nullable=True)
+    price = db.Column(db.Integer, nullable=True)
     image_path = db.Column(db.String, nullable=False)
     
     types = db.relationship("Types", secondary="card_types", backref="cards")
 
     def __repr__(self):
-        return f'<Card card_id={self.card_id} pokemon_name={self.pokemon_name} card_name={self.card_name} price={self.price}>'
+        return f'<Card card_id={self.card_id} name={self.name} price={self.price}>'
 
 
 class Types(db.Model):
@@ -101,7 +100,6 @@ class Order(db.Model):
                         primary_key=True)
     user_card_id = db.Column(db.Integer, db.ForeignKey("user_cards.user_card_id"))
     user_id = db.Column(db.Integer, db.ForeignKey("users.user_id"))
-    listed = db.Column(db.DateTime, nullable=False)
     purchased = db.Column(db.DateTime, nullable=False)
     
     user_card = db.relationship("UserCard", backref="order")
@@ -111,23 +109,23 @@ class Order(db.Model):
         return f'<Order order_id={self.order_id} user_card={self.user_card_id} user={self.user_id}>'
 
 
-class ShoppingCart(db.Model):
-    """A shopping cart for users to add potential purchases."""
+# class ShoppingCart(db.Model):
+#     """A shopping cart for users to add potential purchases."""
 
-    __tablename__ = "shopping_carts"
+#     __tablename__ = "shopping_carts"
 
-    shopping_cart_id = db.Column(db.Integer,
-                        autoincrement=True,
-                        primary_key=True,
-                        nullable=False)
-    user_id = db.Column(db.Integer, db.ForeignKey("users.user_id"))
-    user_card_id = db.Column(db.Integer, db.ForeignKey("user_cards.user_card_id"))
+#     shopping_cart_id = db.Column(db.Integer,
+#                         autoincrement=True,
+#                         primary_key=True,
+#                         nullable=False)
+#     user_id = db.Column(db.Integer, db.ForeignKey("users.user_id"))
+#     user_card_id = db.Column(db.Integer, db.ForeignKey("user_cards.user_card_id"))
 
-    user = db.relationship("User", backref="shopping_cart")
-    user_cards = db.relationship("UserCard", backref="shopping_carts")
+#     user = db.relationship("User", backref="shopping_cart")
+#     user_cards = db.relationship("UserCard", backref="shopping_carts")
     
-    def __repr__(self):
-        return f'<Shopping cart shopping_cart_id={self.shopping_cart_id} user_id={self.user_id} user_card_id={self.user_card_id}>'
+#     def __repr__(self):
+#         return f'<Shopping cart shopping_cart_id={self.shopping_cart_id} user_id={self.user_id} user_card_id={self.user_card_id}>'
 
 
 def connect_to_db(flask_app, db_uri="postgresql:///poke", echo=True):

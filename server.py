@@ -180,7 +180,7 @@ def create_order():
             usercard = crud.get_user_card_by_id(user_card_id)
 
             #create new order
-            order = crud.create_order(usercard, user, date.today(), date.today())
+            order = crud.create_order(usercard, user, date.today())
             db.session.add(order)
 
             #update existing usercard
@@ -249,6 +249,17 @@ def process_logout():
     flash("Logged out.")
 
     return redirect("/")
+
+
+@app.route('/search', methods=["POST"])
+def search():
+    
+    searched = request.form.get("searched")
+    results = crud.get_card_by_name(searched)
+   
+    return render_template('search.html',
+                            results=results,
+                            searched=searched)
 
 
 
