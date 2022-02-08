@@ -21,8 +21,6 @@ with open("data/poke_cards.json") as f:
 cards_in_db = []
 # all_types = []
 for card in card_data["data"]:
-    print('**************************')
-    print(card)
 
     name = card["name"]
     price = card["tcgplayer"]["prices"].get("normal", {}).get("holofoil")
@@ -45,7 +43,7 @@ model.db.session.commit()
 
 # 10 random users and cards
 
-for n in range(100):
+for n in range(10):
     name = f'Lauren {n}'
     email = f'user{n}@test.com' 
     password = 'test'
@@ -53,7 +51,7 @@ for n in range(100):
     user = crud.create_user(name, email, password)
     model.db.session.add(user)
 
-    for n2 in range(2):
+    for n2 in range(100):
         random_card = choice(cards_in_db)
 
         user_card = crud.create_user_card(user, random_card)
