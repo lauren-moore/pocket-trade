@@ -10,8 +10,6 @@ app = Flask(__name__)
 app.secret_key = "dev"
 app.jinja_env.undefined = StrictUndefined
 
-# API_KEY = os.environ['POKEMONTCG_KEY']
-
 @app.route('/login')
 @app.route('/')
 def homepage():
@@ -34,34 +32,6 @@ def all_cards():
     cards = crud.get_cards()
 
     return render_template('all_cards.html', cards=cards)
-
-
-
-# @app.route('/cards/search')
-# def find_cards():
-#     """Search for cards on Pokemon TCG"""
-
-#     q = request.args.get('query', '')
-#     page = request.args.get('page', '')
-#     pagesize = request.args.get('pagesize', '')
-
-#     url = 'https://api.pokemontcg.io/v2/cards'
-#     payload = {'apikey': API_KEY,
-#                 'nationalPokedexNumbers' : [1],
-#                'q': q,
-#                'page': page,
-#                'pageSize': pagesize}
-
-#     response = requests.get(url, params=payload)
-
-#     data = response.json()
-#     cards = data['cards']
-
-#     return render_template('search-results.html',
-#                            pformat=pformat,
-#                            data=data,
-#                            results=cards)
-
 
 
 @app.route('/usercards/<card_id>')

@@ -9,20 +9,14 @@ import json
 
 app = Flask(__name__)
 app.secret_key = "dev"
-API_KEY = 'c609b2a0-ca0f-4910-b3ef-a1f70a872874'
+API_KEY = os.environ.get('POKEMONTCG_KEY')
 
 def find_cards():
     """Search for cards on Pokemon TCG"""
 
     url = 'https://api.pokemontcg.io/v2/cards/'
 
-
-    # payload = {'apikey': API_KEY,
-    #             'nationalPokedexNumbers': 1}
-
-
     response = requests.get(url, params={"q": "nationalPokedexNumbers:[1 TO 151]"}, headers={"X-Api-Key": API_KEY})
-
     data = response.json()
 
     cards = data['data']
@@ -47,13 +41,8 @@ def find_cards():
         if 'tcgplayer' in card:
             card.pop('tcgplayer')
 
-
-
-
     with open('poke_cards.json', 'w') as f:
         json.dump(data, f, indent=4)
-    
-    
-    print(data)
+
 
 find_cards()
