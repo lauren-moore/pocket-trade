@@ -1,12 +1,15 @@
 {% extends 'base.html' %}
 
 {% block body %}
+<br>
+<h2>Your Cart</h2>
 
     <table class="table table-striped mt-3">
         <thead>
         <tr>
             <th>Card Name</th>
             <th>Price</th>
+            <th>Remove</th>
         </tr>
         </thead>
         <tbody>
@@ -17,7 +20,7 @@
             <tr>
                 <td>{{ usercard.card.name }}</td>
                 <td>${{ "%0.2f" | format(usercard.card.price) }}</td>
-            
+                <td><a href="/remove/{{ usercard.user_card_id }}">Remove</td>
             </tr>
             {% endfor %}
         {% endif %}

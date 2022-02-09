@@ -44,6 +44,10 @@ def find_cards():
             card.pop('convertedRetreatCost')
         if 'rules' in card:
             card.pop('rules')
+        if 'tcgplayer' in card:
+            card.pop('tcgplayer')
+
+
 
 
     with open('poke_cards.json', 'w') as f:

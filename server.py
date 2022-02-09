@@ -133,7 +133,8 @@ def show_shopping_cart():
     return render_template("cart.html",
                            cart=cart,
                            order_total=order_total,
-                           shopping_cart=shopping_cart)
+                           shopping_cart=shopping_cart,
+                            usercard=usercard)
 
 
 @app.route("/add_to_cart/<user_card_id>")
@@ -261,6 +262,21 @@ def search():
                             results=results,
                             searched=searched)
 
+
+
+@app.route('/remove/<user_card_id>')
+def remove_from_cart(user_card_id):
+
+    
+    shopping_cart = session.get('cart')
+    print("****************")
+    print(shopping_cart)
+    shopping_cart = shopping_cart.pop(user_card_id)
+    for key, value in shopping_cart:
+        print(shopping_cart)
+    print("****************")
+  
+    return redirect(request.referrer)
 
 
 if __name__ == "__main__":

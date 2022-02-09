@@ -4,6 +4,7 @@ import os
 import json
 from random import choice, randint
 from datetime import datetime
+import re
 
 import crud
 import model
@@ -23,7 +24,7 @@ cards_in_db = []
 for card in card_data["data"]:
 
     name = card["name"]
-    price = card["tcgplayer"]["prices"].get("normal", {}).get("holofoil")
+    price = randint(1,999)
     image_path = card["images"]["large"]
     db_card = crud.create_card(name, price, image_path)
     cards_in_db.append(db_card)
