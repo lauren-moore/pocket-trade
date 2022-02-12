@@ -10,10 +10,10 @@ def create_user(name, email, password):
 
     return user
 
-def create_card(name, price, image_path):
+def create_card(name, price, rarity, image_path):
     """Create and return a new card."""
 
-    card = Card(name=name, price=price, image_path=image_path)
+    card = Card(name=name, price=price, rarity=rarity, image_path=image_path)
 
     return card
 

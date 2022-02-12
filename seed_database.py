@@ -25,8 +25,13 @@ for card in card_data["data"]:
 
     name = card["name"]
     price = randint(1,999)
+    
+    if "rarity" in card:
+        rarity = card["rarity"]
+    else:
+        rarity = "Common"
     image_path = card["images"]["large"]
-    db_card = crud.create_card(name, price, image_path)
+    db_card = crud.create_card(name, price, rarity, image_path)
     cards_in_db.append(db_card)
   
 #     for type_name in card_data:

@@ -3,23 +3,27 @@
 {% block title %} User Info {% endblock %}
 
 {% block body %}
-<h1>{{ user.name }}'s Cards</h1>
+<h1 id="header" style="text-align:center">{{ user.name }}'s Cards</h1>
 
 
-<div class="row">
-  <div class="col-6">
-    <ul>
+
+      <div class="container">
+        <div class="user-details">
+        <div class="grid">
+      
       {% for usercard in usercards %}
         {% if usercard.user_id == user.user_id and usercard.sold == False %}
-        <div class="flex-container">
-          <div class="flex-child poke">
+        <!-- <div class="flex-container">
+          <div class="flex-child poke"> -->
         <!-- <a href="/cards/{{ usercard.user_card_id }}">Sold by: {{ usercard.user.name }} </a> -->
         <a href="/cards/{{ usercard.user_card_id }}"><img src="{{ usercard.card.image_path}}" alt="photo"></a>
-          </div>
+         
         {% endif %}
       {% endfor %}
-    </ul>
+    <!-- </ul> -->
   </div>
+</div>
+</div>
 
 
   <div class="col-3">

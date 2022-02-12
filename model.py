@@ -31,7 +31,7 @@ class Card(db.Model):
                         autoincrement=True,
                         primary_key=True)
     name = db.Column(db.String, nullable=False)
-    # flavor_text = db.Column(db.Text, nullable=True)
+    rarity = db.Column(db.String, nullable=True)
     price = db.Column(db.Integer, nullable=True)
     image_path = db.Column(db.String, nullable=False)
     

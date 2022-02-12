@@ -3,10 +3,87 @@
 
 
 {% block body %}
-  <h1>Pokédex</h1>
+  <h1 id="header" style="text-align:center">Pokédex</h1>
 
-    <div class="container">
-      <!-- <div class="d-flex align-content-center flex-wrap"> -->
+  <div class="container-fluid">
+    <div class="row flex-nowrap">
+        <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-white">
+            <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+                <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-black text-decoration-none">
+                    <span class="fs-5 d-none d-sm-inline">Browse by:</span>
+                   
+                </a>
+                <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link align-middle px-0">
+                            <span class="ms-1 d-none d-sm-inline">Type</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                            <span class="ms-1 d-none d-sm-inline">Rarity</span> </a>
+                        <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
+                          {% for card in cards %}
+                            {% for rarity in card.rarity %}
+                            <li class="w-100">
+                                <a href="/usercards/{{ card.rarity }}" class="nav-link px-0"> <span class="d-none d-sm-inline">{{ card.rarity }}</span></a>
+                            </li>
+                            {% endfor %}
+                            {% endfor %}
+                        </ul>
+                    </li>
+
+                        </ul> 
+                </ul>
+ 
+            </div>
+        </div>
+        <div class="col py-4">
+          <div class="container">
+            <div class="grid">
+              <!-- <div class="all-cards"> -->
+              {% for card in cards %}
+                <a href="/usercards/{{ card.card_id }}"><img src="{{ card.image_path }}">
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- 
+  <div class="container">
+    <div class="row">
+    <div class="col-5">
+      column
+      </div>
+      </div>
+      </div>
+          {% for card in cards %}
+          <div class="img-container">
+            
+            <div class="d-flex align-content-center flex-wrap">
+          <a href="/usercards/{{ card.card_id }}"><img src="{{ card.image_path }}">
+          </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div> -->
+
+
+
+
+    <!-- <div class="container">
+      <div class="wrapper">
+      <div class="d-flex align-content-center flex-wrap">
         <div class="rounded mx-auto d-block">
       <div class="row">
       <div class="col-lg-2 col-sm-6">
@@ -20,11 +97,11 @@
             </div>
             </div>
             {% endfor %}
-          
+          </div>
       </div>
     </div>
   </div>
-</div>
+</div> -->
 
 
 
