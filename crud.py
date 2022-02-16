@@ -1,6 +1,6 @@
 """CRUD operations."""
 
-from model import db, User, Card, UserCard, Order, Types, connect_to_db
+from model import db, User, Card, UserCard, Order, Types, Rarity, connect_to_db
 
 
 def create_user(name, email, password):
@@ -44,6 +44,22 @@ def create_order(user_card, user, purchased):
     order = Order(user_card=user_card, user=user, purchased=purchased)
 
     return order
+
+def create_rarity(name):
+
+    rarity = Rarity(name=name)
+
+    return rarity
+
+def get_cards_by_rarity(rarity_id):
+    '''get cards by rarity.'''
+
+    return Card.query.get(rarity_id).all()
+
+def get_rarity():
+    """Return all rarity types."""
+
+    return Rarity.query.all()
 
 def get_cards():
     """Return all cards."""

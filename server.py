@@ -1,6 +1,6 @@
 """Server for Pokemon Card app."""
 from flask import Flask, render_template, request, flash, session, redirect
-from model import db, connect_to_db
+from model import Rarity, Card, db, connect_to_db
 from jinja2 import StrictUndefined
 import crud
 from datetime import date
@@ -30,8 +30,45 @@ def all_cards():
     """View cards page."""
 
     cards = crud.get_cards()
+    rarities = crud.get_rarity()
+    
 
-    return render_template('all_cards.html', cards=cards)
+    return render_template('all_cards.html',
+                            cards=cards,
+                            rarities=rarities)
+
+
+@app.route('/rarity/<rarity_id>')
+def all_cards_with_rarity(rarity_id):
+    """View groups of cards based on their rarity."""
+
+    rarities = crud.get_rarity()
+    rarity_type = Rarity.query.filter_by(rarity_id=rarity_id).first()
+    
+    cards = crud.get_cards()
+    rarity_cards = []
+    for card in cards:
+        if card.rarity_id == rarity_type.rarity_id:
+            rarity_cards.append(card)
+  
+    return render_template('rarity.html', rarity_type=rarity_type, rarity_cards=rarity_cards, rarities=rarities, cards=cards)
+
+
+
+#  humans_with_species =[]
+
+#     for human in all_humans:
+#         for animal in human.animals:
+#             if animal.animal_species == animal_species:
+#                 if human not in humans_with_species:
+#                     humans_with_species.append(human)
+   
+#     if humans_with_species:
+#         return humans_with_species
+#     else:
+#         return print("No humans have this animal species!")
+
+
 
 
 @app.route('/usercards/<card_id>')
@@ -73,7 +110,7 @@ def show_user(user_id):
     usercards = crud.get_user_cards()
     card = crud.get_cards()
     
-    count_of_cards =0
+    count_of_cards = 0
 
     for usercard in usercards:
         if usercard.user_id == session['user_id']:
@@ -215,7 +252,7 @@ def process_login():
 def process_logout():
     """Log user out."""
 
-    del session["user_id"] 
+    del session["user_id"]
     flash("Logged out.")
 
     return redirect("/")

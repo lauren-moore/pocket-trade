@@ -31,14 +31,33 @@ class Card(db.Model):
                         autoincrement=True,
                         primary_key=True)
     name = db.Column(db.String, nullable=False)
-    rarity = db.Column(db.String, nullable=True)
+    rarity_id = db.Column(db.Integer, db.ForeignKey("rarities.rarity_id"), nullable=False)
     price = db.Column(db.Integer, nullable=True)
     image_path = db.Column(db.String, nullable=False)
     
+    rarity = db.relationship("Rarity", back_populates="cards")
     types = db.relationship("Types", secondary="card_types", backref="cards")
 
     def __repr__(self):
         return f'<Card card_id={self.card_id} name={self.name} price={self.price}>'
+
+
+class Rarity(db.Model):
+    """Types of rarity."""
+
+    __tablename__ = "rarities"
+
+    rarity_id = db.Column(db.Integer,
+                    autoincrement=True,
+                    primary_key=True,
+                    nullable=False)
+    name = db.Column(db.String, unique=True)
+
+    cards = db.relationship("Card", back_populates="rarity")
+
+    def __repr__(self):
+        return f'<Rarity id={self.rarity_id} is name={self.name}>'
+
 
 
 class Types(db.Model):
@@ -84,8 +103,9 @@ class UserCard(db.Model):
     card_id = db.Column(db.Integer, db.ForeignKey("cards.card_id"))
     sold = db.Column(db.Boolean, nullable=False)
 
-    card = db.relationship("Card", backref="user_cards")
     user = db.relationship("User", backref="user_cards")
+    card = db.relationship("Card", backref="user_cards")
+    
 
     def __repr__(self):
         return f'<Card {self.card_id} belongs to user {self.user_id}>'
@@ -137,6 +157,13 @@ def connect_to_db(flask_app, db_uri="postgresql:///poke", echo=True):
     db.init_app(flask_app)
 
     print("Connected to the db!")
+
+
+
+
+
+
+
 
 
 if __name__ == "__main__":

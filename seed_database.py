@@ -20,20 +20,36 @@ with open("data/poke_cards.json") as f:
     card_data = json.loads(f.read())
 
 cards_in_db = []
-# all_types = []
+all_rarities = []
+rarities_in_db = []
 for card in card_data["data"]:
 
     name = card["name"]
     price = randint(1,999)
+    image_path = card["images"]["large"]
     
     if "rarity" in card:
         rarity = card["rarity"]
+        if rarity not in all_rarities:
+            all_rarities.append(rarity)
+            db_rarity = crud.create_rarity(rarity)
+            rarities_in_db.append(db_rarity)
+          
     else:
-        rarity = "Common"
-    image_path = card["images"]["large"]
-    db_card = crud.create_card(name, price, rarity, image_path)
+        rarity = None
+    
+    db_card = crud.create_card(name, price, db_rarity, image_path)
+
+    
     cards_in_db.append(db_card)
   
+
+model.db.session.add_all(rarities_in_db)
+model.db.session.add_all(cards_in_db)
+
+model.db.session.commit()
+
+
 #     for type_name in card_data:
 #         if type_name not in all_types:
 #             all_types.append(type_name)
@@ -44,8 +60,7 @@ for card in card_data["data"]:
 #     db_typename = crud.create_type(type_name)
 #     types_in_db.append(db_typename)
 
-model.db.session.add_all(cards_in_db)
-model.db.session.commit()
+
 
 # 10 random users and cards
 
