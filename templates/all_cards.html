@@ -24,20 +24,13 @@
                             <span class="ms-1 d-none d-sm-inline">Rarity</span> </a>
                         <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
                           {% for rarity in rarities %}
-    
                             <li class="w-100">
                                 <a href="/rarity/{{ rarity.rarity_id }}" class="nav-link px-0"> <span class="d-none d-sm-inline">{{ rarity.name }}</span></a>
-
                             </li>
                             {% endfor %}
-                            
-                          
                         </ul>
                     </li>
-
-                        </ul> 
                 </ul>
- 
             </div>
         </div>
         <div class="col py-5">
@@ -54,73 +47,4 @@
     </div>
 </div>
 
-
-
-<!-- 
-  <div class="container">
-    <div class="row">
-    <div class="col-5">
-      column
-      </div>
-      </div>
-      </div>
-          {% for card in cards %}
-          <div class="img-container">
-            
-            <div class="d-flex align-content-center flex-wrap">
-          <a href="/usercards/{{ card.card_id }}"><img src="{{ card.image_path }}">
-          </div>
-          </div>
-          {% endfor %}
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
-</div> -->
-
-
-
-
-    <!-- <div class="container">
-      <div class="wrapper">
-      <div class="d-flex align-content-center flex-wrap">
-        <div class="rounded mx-auto d-block">
-      <div class="row">
-      <div class="col-lg-2 col-sm-6">
-          <div class="thumbnail"> 
-            {% for card in cards %}
-            <div class="img-container">
-              
-              <div class="d-flex align-content-center flex-wrap">
-            <a href="/usercards/{{ card.card_id }}"><img src="{{ card.image_path }}" 
-              class="gallery-item" alt="gallery"></a>
-            </div>
-            </div>
-            {% endfor %}
-          </div>
-      </div>
-    </div>
-  </div>
-</div> -->
-
-
-
-  <!-- <section class="gallery min-vh-100">
-    <div class="container-lg">
-      <div class="row row-cols-3 row-cols-sm-2 row-cols-md-3">
-        <div class="col">
-          <div class="thumbnail">
-            {% for card in cards %}
-            <a href="/usercards/{{ card.card_id }}"><img src="{{ card.image_path }}" 
-              class="gallery-item" alt="gallery"></a>
-            {% endfor %}
-          </div>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
-</section> -->
 {% endblock %}

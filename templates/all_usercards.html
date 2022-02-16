@@ -3,15 +3,67 @@
 
 
 {% block body %}
-  <h1>{{ card.name }}</h1>
+<h1 id="header" style="text-align:center">{{ card.name }}</h1>
+  
 
-  <ul>
-    {% for usercard in usercards %}
-        {% if usercard.card_id == card.card_id and usercard.sold == False %}
-      <li>
-        <a href="/cards/{{ usercard.user_card_id }}">Sold by: {{ usercard.user.name }} </a>
-      </li>
+  {% for usercard in usercards %}
+  {% if usercard.card_id == card.card_id and usercard.sold == False %}
+
+  
+  <div class="card" style="width: 18rem;">
+    <div class="container-fluid">
+      <div class="card-body">
+        <div style="float:middle">
+    <img src="{{ card.image_path }}" class="card-img-top" alt="...">
+    
+    <div class="card-body">
+      <h5 class="card-title">{{ card.name }}</h5>
+    </div>
+    </div>
+  </div>
+    <!-- <ul class="list-group list-group-flush"> -->
+      <!-- <div style="padding:.5em"> -->
+      <li class="list-group-item">Sold by: {{ usercard.user.name }}</li>
+      <li class="list-group-item">Contact info: {{ usercard.user.email }}</li>
+    
+    <div class="card-body">
+      <a href="/cards/{{ usercard.user_card_id }}" class="card-link">Card Details</a>
+      
+      
+    </div>
+  </div>
+
+
+    <!-- <div class="container-fluid">
+        <div class="card col-5 mt-4">
+          <div class="card text-white bg-danger mb-3">
+          <div class="card-header">
+            <div class="clearfix">
+              <h3 style="float:left">
+                {{ usercard.user.name }}</h3>
+              <div style="float:right">
+                <a href="/cards/{{ usercard.user_card_id }}">Card Details</a>
+              </div>
+            </div>
+          </div>
+          </div>
+      <div style="padding:.5em">
+      <ul>
+        <li>
+          Sold by: {{ usercard.user.name }}
+        </li>
+        <li>
+          Contact info: {{ usercard.user.email }}
+        </li>
+      </ul>
+
+        
+        </div>
+         
+        </div>
+        </div> -->
+      
         {% endif %}
     {% endfor %}
-  </ul>
+ 
 {% endblock %}
