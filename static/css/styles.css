@@ -10,9 +10,17 @@ img{
   max-width: 200px;
 }
 
-.grid {
+.grid-cards {
   display: grid;
   grid-template-columns: 2fr 2fr 2fr 2fr 2fr;
+  grid-gap: 30px;
+  align-items: center;
+}
+
+.grid-usercards {
+  grid-template-columns: 2fr 2fr;
+  padding: 30px;
+  display: grid;
   grid-gap: 30px;
   align-items: center;
 }
