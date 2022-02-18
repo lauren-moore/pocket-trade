@@ -4,12 +4,12 @@
 
 {% block body %}
 <h1 id="header" style="text-align:center"><strong>{{ card.name }}</strong></h1>
-<!-- <h5 style="text-align:center">Available cards for purchase: 4</h5> -->
+
+
         
-          <div class="col py-2">
-            <div class="container">
-              <div class="grid-usercards">
-          
+  <!-- <div class="col py-2"> -->
+    <div class="container">
+      <div class="grid-usercards">
           
   {% for usercard in usercards %}
   {% if usercard.card_id == card.card_id and usercard.sold == False %}
