@@ -25,6 +25,14 @@ img{
   align-items: center;
 }
 
+.grid-card-details {
+  grid-template-columns: 2fr 2fr;
+  padding: 70px;
+  display: grid;
+  grid-gap: 100px;
+  align-items: center;
+}
+
 .grid .user-details {
   display: grid;
   grid-template-columns: 2fr 2fr 2fr 2fr;

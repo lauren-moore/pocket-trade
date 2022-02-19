@@ -33,6 +33,7 @@ class Card(db.Model):
     name = db.Column(db.String, nullable=False)
     rarity_id = db.Column(db.Integer, db.ForeignKey("rarities.rarity_id"), nullable=False)
     price = db.Column(db.Integer, nullable=True)
+    flavor_text = db.Column(db.Text, nullable=True)
     image_path = db.Column(db.String, nullable=False)
     
     rarity = db.relationship("Rarity", back_populates="cards")

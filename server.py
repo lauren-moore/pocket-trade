@@ -78,6 +78,7 @@ def all_usercards(card_id):
     usercards = crud.get_user_cards()
     card = crud.get_card_by_id(card_id)
 
+
     return render_template('all_usercards.html', 
                             usercards=usercards,
                             card=card)
@@ -164,6 +165,7 @@ def add_to_cart(user_card_id):
 def checkout():
     """Checkout customer and process payment."""
 
+
     return render_template('checkout.html')
 
 
@@ -179,7 +181,10 @@ def create_order():
     if user_logged_in is None:
         flash("Please log in to trade cards.")
         return redirect("/login")
-        
+    
+    if shopping_cart is None:
+        flash("Your shopping cart is empty!")
+
     else:
         for user_card_id, _quantity in shopping_cart.items():
 
@@ -201,7 +206,7 @@ def create_order():
         db.session.commit()
         del session["cart"]
 
-    flash("Your order has been processed!")
+        flash("Your order has been processed!")
 
     return redirect("/checkout")
 

@@ -5,12 +5,16 @@
 <!-- <h1 id="header" style="text-align:center"><strong>{{ usercard.card.name }}</strong></h1> -->
 
 <div class="container">
-    <div class="grid-usercards">
+    <div class="grid-card-details">
         <div class="row">
             <img src="{{ usercard.card.image_path }}">
         </div>
         <div class="col">
             <h2 id="header" style="text-align:center"><strong>{{ usercard.card.name }}</strong></h2>
+            <blockquote class="blockquote">
+            <p style="text-align:center">{{ usercard.card.flavor_text }}</p>
+        </blockquote>
+        <p></p>
             <div class="card text-center bg-light">
                 <div class="card-body">
                     <h5 class="card-title">Price</h5>
@@ -20,17 +24,17 @@
                             <a class="btn btn-primary" href="/add_to_cart/{{ usercard.user_card_id }}">Add to cart</a>
                         </form>
                         </div>
-                </div>
+                    </div>
         
        
-
+                    <p></p>
     <div class="card-details">
 
-        <h3>Card Details</h3>
+        <h3>Trainer:</h3>
 
         <ul>
-            <li>Card: {{ usercard.card.name }}</li>
-            <li>Seller: {{ usercard.user.name }}</li>
+            <li>Name: {{ usercard.user.name }}</li>
+            <li>Contact Info: {{ usercard.user.email }}</li>
         </ul>
     </div>
 

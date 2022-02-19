@@ -27,6 +27,9 @@ for card in card_data["data"]:
     name = card["name"]
     price = randint(1,999)
     image_path = card["images"]["large"]
+
+    if "flavorText" in card:
+        flavor_text = card["flavorText"]
     
     if "rarity" in card:
         rarity = card["rarity"]
@@ -38,7 +41,7 @@ for card in card_data["data"]:
     else:
         rarity = None
     
-    db_card = crud.create_card(name, price, db_rarity, image_path)
+    db_card = crud.create_card(name, price, db_rarity, flavor_text, image_path)
 
     
     cards_in_db.append(db_card)
