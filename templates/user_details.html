@@ -3,30 +3,42 @@
 {% block title %} User Info {% endblock %}
 
 {% block body %}
-<h1 id="header" style="text-align:center">{{ user.name }}'s Cards</h1>
+<!-- <h1 id="header" style="text-align:center">{{ user.name }}'s Cards</h1> -->
 
+<row>
 
+  <!-- <div class="card text-dark bg-warning mb-3" style="max-width: 350px;">
+    <h5 class="card-title" style="padding:15px;">Trainer {{ user.name }}</h5>
+    <img src="/static/img/jigglypuff2.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Trainer {{ user.name }}</h5>
+      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      <p class="card-text"><small class="text-muted">Collected Cards: {{ count_of_cards }}</small></p>
+    </div>
+  </div> -->
 
-      <div class="container">
-        <div class="user-details">
-        <div class="grid">
-      
-      {% for usercard in usercards %}
-        {% if usercard.user_id == user.user_id and usercard.sold == False %}
-        <!-- <div class="flex-container">
-          <div class="flex-child poke"> -->
-        <!-- <a href="/cards/{{ usercard.user_card_id }}">Sold by: {{ usercard.user.name }} </a> -->
-        <a href="/cards/{{ usercard.user_card_id }}"><img src="{{ usercard.card.image_path}}" alt="photo"></a>
-         
-        {% endif %}
-      {% endfor %}
-    <!-- </ul> -->
+  <div class="profile-info" style="padding-top:30px;">
+
+    <div class="card text-dark bg-warning mb-3" style="max-width: 540px;">
+      <!-- <div class="profile"> -->
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img src="/static/img/jigglypuff_.jpg" class="img-fluid rounded-start"  style="padding:10px;" alt="...">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">Trainer {{ user.name }}</h5>
+          <p class="card-text">Collected Cards: {{ count_of_cards }}</p>
+          <p class="card-text"><small class="text-muted">Collected Cards: {{ count_of_cards }}</small></p>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
-</div>
+  </div>
 
 
-  <div class="col-3">
+
+  <!-- <div class="col-3" style="padding:30px">
     <div class="card text-left bg-light">
         <div class="card-body">
           <ul>
@@ -47,9 +59,24 @@
           
             
           </ul>
+          </div>
+        </row>
+        </div>
         </div>
     </div>
   </div>
+</div> -->
+</row>
+<div class="mx-auto" style="width: 1200px;">
+<div class="col py-5">
+  <div class="grid-cards">
+      {% for usercard in usercards %}
+        {% if usercard.user_id == user.user_id and usercard.sold == False %}
+          <a href="/cards/{{ usercard.user_card_id }}"><img src="{{ usercard.card.image_path}}" alt="photo"></a>
+        {% endif %}
+      {% endfor %}
+  </div>
+</div>
 </div>
 
 {% endblock %}
