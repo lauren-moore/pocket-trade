@@ -26,6 +26,7 @@ for card in card_data["data"]:
 
     name = card["name"]
     price = randint(1,999)
+    pokedex_number = card["nationalPokedexNumbers"][0]
     image_path = card["images"]["large"]
 
     if "flavorText" in card:
@@ -37,11 +38,10 @@ for card in card_data["data"]:
             all_rarities.append(rarity)
             db_rarity = crud.create_rarity(rarity)
             rarities_in_db.append(db_rarity)
-          
     else:
         rarity = None
     
-    db_card = crud.create_card(name, price, db_rarity, flavor_text, image_path)
+    db_card = crud.create_card(name, price, db_rarity, flavor_text, pokedex_number, image_path)
 
     
     cards_in_db.append(db_card)

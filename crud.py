@@ -10,10 +10,10 @@ def create_user(name, email, password):
 
     return user
 
-def create_card(name, price, rarity, flavor_text, image_path):
+def create_card(name, price, rarity, flavor_text, pokedex_number, image_path):
     """Create and return a new card."""
 
-    card = Card(name=name, price=price, rarity=rarity, flavor_text=flavor_text, image_path=image_path)
+    card = Card(name=name, price=price, rarity=rarity, flavor_text=flavor_text, pokedex_number=pokedex_number, image_path=image_path)
 
     return card
 

@@ -20,7 +20,6 @@
   <div class="profile-info" style="padding-top:30px;">
 
     <div class="card text-dark bg-warning mb-3" style="max-width: 540px;">
-      <!-- <div class="profile"> -->
     <div class="row g-0">
       <div class="col-md-4">
         <img src="/static/img/jigglypuff_.jpg" class="img-fluid rounded-start"  style="padding:10px;" alt="...">
@@ -29,7 +28,7 @@
         <div class="card-body">
           <h5 class="card-title">Trainer {{ user.name }}</h5>
           <p class="card-text">Collected Cards: {{ count_of_cards }}</p>
-          <p class="card-text"><small class="text-muted">Collected Cards: {{ count_of_cards }}</small></p>
+          <p class="card-text"><small class="text-muted">{{ usercards[0].card.flavor_text }}</small></p>
         </div>
       </div>
     </div>
