@@ -10,11 +10,17 @@
             <img src="{{ usercard.card.image_path }}">
         </div>
         <div class="col">
-            <h2 id="header" style="text-align:center"><strong>{{ usercard.card.name }}</strong></h2>
+            {% if usercard.card.pokedex_number < 10 %}
+            <h2 id="header" style="text-align:center"><strong>{{ usercard.card.name }} #00{{ usercard.card.pokedex_number }}</strong></h2>
+            {% elif usercard.card.pokedex_number < 100 and card.pokedex_number > 9 %}
+            <h2 id="header" style="text-align:center"><strong>{{ usercard.card.name }} #0{{ usercard.card.pokedex_number }}</strong></h2>
+            {% elif usercard.card.pokedex_number > 100 %}
+            <h2 id="header" style="text-align:center"><strong>{{ usercard.card.name }} #{{ usercard.card.pokedex_number }}</strong></h2>
+            {% endif %}
             <blockquote class="blockquote">
             <p style="text-align:center">{{ usercard.card.flavor_text }}</p>
         </blockquote>
-        <p></p>
+        
             <div class="card text-center bg-light">
                 <div class="card-body">
                     <h5 class="card-title">Price</h5>

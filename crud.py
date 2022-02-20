@@ -64,7 +64,7 @@ def get_rarity():
 def get_cards():
     """Return all cards."""
 
-    return Card.query.all()
+    return Card.query.order_by(Card.pokedex_number).all()
 
 def get_card_by_id(card_id):
     '''get card by id'''
@@ -100,7 +100,7 @@ def get_user_by_email(email):
 def get_user_cards():
     """Return all user cards."""
 
-    return UserCard.query.all()
+    return UserCard.query.join(Card).order_by(Card.pokedex_number).all()
 
 
 def get_user_cards_by_user(user_id):

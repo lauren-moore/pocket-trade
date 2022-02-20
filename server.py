@@ -54,28 +54,12 @@ def all_cards_with_rarity(rarity_id):
     return render_template('rarity.html', rarity_type=rarity_type, rarity_cards=rarity_cards, rarities=rarities, cards=cards)
 
 
-
-#  humans_with_species =[]
-
-#     for human in all_humans:
-#         for animal in human.animals:
-#             if animal.animal_species == animal_species:
-#                 if human not in humans_with_species:
-#                     humans_with_species.append(human)
-   
-#     if humans_with_species:
-#         return humans_with_species
-#     else:
-#         return print("No humans have this animal species!")
-
-
-
-
 @app.route('/usercards/<card_id>')
 def all_usercards(card_id):
     """View all available usercards."""
 
     usercards = crud.get_user_cards()
+
     card = crud.get_card_by_id(card_id)
 
 
@@ -102,7 +86,7 @@ def all_users():
     return render_template('all_users.html', users=users)
 
 
-@app.route('/users/<user_id>')
+# @app.route('/users/<user_id>')
 @app.route('/collection/<user_id>')
 def show_user(user_id):
     """Show user details."""
@@ -116,6 +100,10 @@ def show_user(user_id):
     for usercard in usercards:
         if usercard.user_id == session['user_id']:
             count_of_cards += 1
+    
+    
+
+
 
     return render_template('user_details.html', user=user,
                                                 usercards=usercards,
