@@ -2,10 +2,32 @@
 {% block title %}Check Out{% endblock %}
 
 {% block body %}
-  <h1>Check Out</h1>
-  <p></p>
+  <h1 id="header" style="text-align:center">Check Out</h1>
+  <!-- <div class="mx-auto" style="width: 1200px;">
+  <p></p> -->
 
-  <h2>Card Payment</h2>
+
+  <div class="card" style="width: 30rem;">
+    <div class="card-body">
+      <h3 class="card-title">Card Payment</h3>
+      <p></p>
+      
+      <h6 class="card-subtitle mb-2 text-muted">Card Number:</h6>
+      <input type="text" name="card_number">
+      <p></p>
+      <h6 class="card-subtitle mb-2 text-muted">Expiration Date:</h6>
+      <input type="text" name="exp">
+      <p></p>
+      <h6 class="card-subtitle mb-2 text-muted">CVV:</h6>
+      <input type="text" name="cvv">
+      <p></p>
+      
+      <a href="/collection/{{ session['user_id'] }}" class="card-link">View Collection</a>
+
+    </div>
+  </div>
+
+  <!-- <h2>Card Payment</h2>
   <p></p>
   <form action="/checkout" method="POST">
     <p>
@@ -23,5 +45,5 @@
     <p>
       <input type="submit">
     </p>
-  </form>
+  </form> -->
 {% endblock %}

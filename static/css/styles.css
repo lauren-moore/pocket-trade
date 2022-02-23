@@ -1,12 +1,17 @@
 body {
 max-width: 100%;
 overflow-x: hidden;
-padding: 80px;
+padding: 0px 80px 0px 80px;
 }
 
 img{
   max-width: 200px;
 }
+
+.alert {
+  padding: 10px 125px 10px 80px;
+}
+
 
 .profile-info {
   display: flex;
@@ -56,8 +61,15 @@ img{
   padding: 30px;
 }
 
+
+
 .navbar {
   background: none;
+}
+
+.homepage-cards {
+  padding-top: 40px;
+  padding-left: 80px;
 }
 
 .homepage {

@@ -3,20 +3,8 @@
 {% block title %} User Info {% endblock %}
 
 {% block body %}
-<!-- <h1 id="header" style="text-align:center">{{ user.name }}'s Cards</h1> -->
 
 <row>
-
-  <!-- <div class="card text-dark bg-warning mb-3" style="max-width: 350px;">
-    <h5 class="card-title" style="padding:15px;">Trainer {{ user.name }}</h5>
-    <img src="/static/img/jigglypuff2.jpg" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Trainer {{ user.name }}</h5>
-      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-      <p class="card-text"><small class="text-muted">Collected Cards: {{ count_of_cards }}</small></p>
-    </div>
-  </div> -->
-
   <div class="profile-info" style="padding-top:30px;">
 
     <div class="card text-dark bg-warning mb-3" style="max-width: 540px;">
@@ -28,52 +16,27 @@
         <div class="card-body">
           <h5 class="card-title">Trainer {{ user.name }}</h5>
           <p class="card-text">Collected Cards: {{ count_of_cards }}</p>
-          <p class="card-text"><small class="text-muted">{{ usercards[0].card.flavor_text }}</small></p>
+          <p class="card-text"><small class="text-muted">Its magical and cute appeal has many admirers. It is rare and found only in certain areas.</small></p>
         </div>
       </div>
     </div>
   </div>
   </div>
-
-
-
-  <!-- <div class="col-3" style="padding:30px">
-    <div class="card text-left bg-light">
-        <div class="card-body">
-          <ul>
-            {% if user.user_id != session['user_id'] %}
-            <li>Seller: {{ user.name }}</li>
-            <li>Email: {{ user.email }}</li>
-            {% else %}
-            <h4>{{ user.name }}</h4>
-            <img src="/static/img/jigglypuff.png" width=75%>
-            <p></p>
-            <h6>Email: {{ user.email }}</h6>
-            <h6>Collected Cards: {{ count_of_cards }}</h6>
-            
-            {% endif %}
-            <p></p>
-            <p></p>
-            <p></p>
-          
-            
-          </ul>
-          </div>
-        </row>
-        </div>
-        </div>
-    </div>
-  </div>
-</div> -->
 </row>
+
 <div class="mx-auto" style="width: 1200px;">
+  <h2>Card Collection</h2>
 <div class="col py-5">
   <div class="grid-cards">
       {% for usercard in usercards %}
         {% if usercard.user_id == user.user_id and usercard.sold == False %}
           <a href="/cards/{{ usercard.user_card_id }}"><img src="{{ usercard.card.image_path}}" alt="photo"></a>
-        {% endif %}
-      {% endfor %}
+          {% endif %}
+          {% endfor %}
+      {% if usercards|length == 0 %}
+          Card Collection is empty. 
+    {% endif %}
+      
   </div>
 </div>
 </div>

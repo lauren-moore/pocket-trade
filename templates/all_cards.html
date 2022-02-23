@@ -21,7 +21,7 @@
                     </li>
                     <li>
                         <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                            <span class="ms-1 d-none d-sm-inline">Rarity</span> </a>
+                            <span class="ms-1 d-none d-sm-inline">Rarity</span></a>
                         <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
                           {% for rarity in rarities %}
                             <li class="w-100">
@@ -33,15 +33,16 @@
                 </ul>
             </div>
         </div>
-        <div class="col py-5">
-              <div class="grid-cards">
-              {% for card in cards %}
-                <a href="/usercards/{{ card.card_id }}"><img src="{{ card.image_path }}" alt="photo">
-              {% endfor %}
-            </div>
-          </div>
-       
-    </div>
-</div>
+        
+  <div class="mx-auto" style="width: 1200px;">
+    <div class="col py-5">  
+      <div class="grid-cards">
+        {% for card in cards %}
+          <a href="/usercards/{{ card.card_id }}"><img src="{{ card.image_path }}" alt="photo">
+        {% endfor %}
+      </div>
+    </div>    
+  </div>
+
 
 {% endblock %}

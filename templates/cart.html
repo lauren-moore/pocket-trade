@@ -2,9 +2,14 @@
 
 {% block body %}
 <br>
-<h2>Your Cart</h2>
+<h1 id="header" style="text-align:center">Check Out</h1>
 
-    <table class="table table-striped mt-3">
+    <div class="container">
+        <div class="grid-card-details">
+            <div class="col">
+                
+            
+    <table class="table table-striped mt-3">         
         <thead>
         <tr>
             <th>Card Name</th>
@@ -27,11 +32,35 @@
             </tr>
             {% endfor %}
         {% endif %}
+    </div>
         </tbody>
     </table>
 
+
     <h3>Total: ${{ "%0.2f" | format(order_total) }}</h3>
 
-    <a href="/checkout" class="btn btn-large btn-primary">Check Out</a>
+</div>
+<div class="col">
+
+    <div class="card" style="width: 25rem;">
+        <div class="card-body">
+          <h3 class="card-title">Card Payment</h3>
+          <p></p>
+          <form action="/checkout" method="POST">
+          <h6 class="card-subtitle mb-2 text-muted">Card Number:</h6>
+          <input type="text" name="card_number">
+          <p></p>
+          <h6 class="card-subtitle mb-2 text-muted">Expiration Date:</h6>
+          <input type="text" name="exp">
+          <p></p>
+          <h6 class="card-subtitle mb-2 text-muted">CVV:</h6>
+          <input type="text" name="cvv">
+          <p></p>
+          
+          <input type="submit" class="btn btn-large btn-primary"></a>
+    
+        </form>
+        </div>
+      </div>
 
 {% endblock %}

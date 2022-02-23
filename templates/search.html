@@ -2,19 +2,19 @@
 
 {% block body %}
 
-<h2 id="header">You searched for: <em>{{ searched }}</em> </h2>
 
-<div class="container">
-  <div class="grid">
-    {% if results %}
-      {% for card in results %}
-        <a href="/usercards/{{ card.card_id }}"><img src="{{ card.image_path }}"></a>
-      {% endfor %}
-    {% else %}
-      Your search term <strong>{{ searched }}</strong> was not found.
-    {% endif %}
-    
-  </div>
-</div>
+<div class="mx-auto" style="width: 1200px;">
+  <h2 style="padding-top:30px;">You searched for: <em>{{ searched }}</em> </h2>
+    <div class="col py-5">  
+      <div class="grid-cards">
+        {% if results %}
+          {% for card in results %}
+            <a href="/usercards/{{ card.card_id }}"><img src="{{ card.image_path }}"></a>
+          {% endfor %}
+        {% else %}
+          Your search term <strong>{{ searched }}</strong> was not found.
+        {% endif %}
+      </div>
+    </div>
 
 {% endblock %}

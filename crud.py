@@ -127,12 +127,6 @@ def get_orders():
     return Order.query.all()
 
 
-def get_order_by_id(order_id):
-    '''get order by id'''
-
-    return Order.query.get(order_id)
-
-
 def update_user_card(user_card_id):
     '''update usercard of previous owner.'''
 

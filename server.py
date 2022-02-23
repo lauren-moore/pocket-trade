@@ -5,6 +5,7 @@ from jinja2 import StrictUndefined
 import crud
 from datetime import date
 import requests
+from random import randint
 
 app = Flask(__name__)
 app.secret_key = "dev"
@@ -15,8 +16,20 @@ app.jinja_env.undefined = StrictUndefined
 def homepage():
     """View homepage."""
 
+    # card_id = randint(1, 100)
+    # random_card = crud.get_card_by_id(card_id)
+  
     return render_template('homepage.html')
 
+
+@app.route('/random')
+def random():
+
+    #get random card to display on homepage
+    card_id = randint(1, 100)
+    random_card = crud.get_card_by_id(card_id)
+  
+    return render_template('homepage.html', random_card=random_card)
 
 @app.route("/create-account")
 def view_register_user():
@@ -100,9 +113,6 @@ def show_user(user_id):
     for usercard in usercards:
         if usercard.user_id == session['user_id']:
             count_of_cards += 1
-    
-    
-
 
 
     return render_template('user_details.html', user=user,
@@ -196,7 +206,7 @@ def create_order():
 
         flash("Your order has been processed!")
 
-    return redirect("/checkout")
+    return redirect("/")
 
 
 @app.route("/users", methods=["POST"])
@@ -246,7 +256,7 @@ def process_logout():
     """Log user out."""
 
     del session["user_id"]
-    flash("Logged out.")
+    flash("You have logged out!")
 
     return redirect("/")
 
