@@ -3,14 +3,41 @@
 
 {% block body %}
 <body class="homepage">
-    <div class="col">
+    <div class="row">
+        <div class="col">
     <div class="homepage-cards">
         <h1 class="display-3">Gotta catch 'em all?</h1>
         <h1 class="display-6">Start your collection today.</h1>
         <p></p>
-        <a href="/random"  id="random" class="btn btn-warning">Who's that Pokémon?</a>
+        <button id="btnrandom" class="btn btn-warning">Who's that Pokémon?</a>
     </div>
+    </div>
+</div>
+
+<div class="col">
+    <div class="container">
+        <div class="grid-usercards">
     
+    <div class="card mb-3" id="random-pokemon" style="max-width: 540px;">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img id="random" src="{{ random_card.image_path }}" class="img-fluid rounded-start" alt="...">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title"><strong>It's {{ random_card.name }}!</strong></h5>
+            <p class="card-text">{{ random_card.flavor_text }}</p>
+            <a href="/usercards/{{ random_card.card_id }}" class="card-link">Catch</a> 
+    
+            
+          </div>
+        </div>
     </div>
+      </div>
+    </div>
+    </div>
+</row>
+
+
 </body>
 {% endblock %}

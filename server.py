@@ -16,20 +16,21 @@ app.jinja_env.undefined = StrictUndefined
 def homepage():
     """View homepage."""
 
-    # card_id = randint(1, 100)
-    # random_card = crud.get_card_by_id(card_id)
-  
-    return render_template('homepage.html')
-
-
-@app.route('/random')
-def random():
-
     #get random card to display on homepage
-    card_id = randint(1, 100)
+    card_id = randint(1, 200)
     random_card = crud.get_card_by_id(card_id)
   
     return render_template('homepage.html', random_card=random_card)
+
+
+# @app.route('/random')
+# def random():
+
+#     #get random card to display on homepage
+#     card_id = randint(1, 100)
+#     random_card = crud.get_card_by_id(card_id)
+  
+#     return render_template('random.html', random_card=random_card)
 
 @app.route("/create-account")
 def view_register_user():

@@ -12,14 +12,32 @@ img{
   padding: 10px 125px 10px 80px;
 }
 
+#random {
+  padding: 15px 15px 15px 25px;
+}
+
+#random-pokemon{
+  border-radius: 2em;
+  /* text-align: center; */
+  box-shadow: 0 5px 10px rgba(0,0,0,.2);
+}
 
 .profile-info {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top:40px;
-  
 }
+
+#profile-card {
+  border-radius: 2em;
+  box-shadow: 0 5px 10px rgba(0,0,0,.2);
+}
+
+#profile-img {
+    padding: 15px 15px 15px 15px;
+    border-radius: 3em;
+}
+
 
 .card-body {
   padding: 30px;
