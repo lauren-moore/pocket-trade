@@ -18,8 +18,13 @@ img{
 
 #random-pokemon{
   border-radius: 2em;
+  /* padding-top: 80px; */
   /* text-align: center; */
   box-shadow: 0 5px 10px rgba(0,0,0,.2);
+}
+
+.homepage-random-cards {
+  padding-top: 40px;
 }
 
 .profile-info {
