@@ -23,7 +23,7 @@ img{
   box-shadow: 0 5px 10px rgba(0,0,0,.2);
 }
 
-.homepage-random-cards {
+#homepage-random-cards {
   padding-top: 40px;
 }
 
@@ -92,7 +92,7 @@ img{
 
 .homepage-cards {
   padding-top: 40px;
-  padding-left: 80px;
+  padding-left: 380px;
 }
 
 .homepage {

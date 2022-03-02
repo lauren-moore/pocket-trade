@@ -21,16 +21,18 @@ def homepage():
     random_card = crud.get_card_by_id(card_id)
   
     return render_template('homepage.html', random_card=random_card)
+    # return render_template('homepage.html')
 
 
-# @app.route('/random')
-# def random():
+@app.route('/random')
+def random():
 
-#     #get random card to display on homepage
-#     card_id = randint(1, 100)
-#     random_card = crud.get_card_by_id(card_id)
+    #get random card to display on homepage
+    card_id = randint(1, 100)
+    random_card = crud.get_card_by_id(card_id)
   
-#     return render_template('random.html', random_card=random_card)
+    # return random_card
+    return "hello"
 
 @app.route("/create-account")
 def view_register_user():
