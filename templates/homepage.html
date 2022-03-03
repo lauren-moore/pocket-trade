@@ -3,47 +3,32 @@
 
 {% block body %}
 <body class="homepage">
-    <div class="row">
-        <div class="col">
-            <div class="homepage-cards">
-                <h1 class="display-3">Gotta catch 'em all?</h1>
-                <h1 class="display-6">Start your collection today.</h1>
-                <p></p>
-                <button id="btnrandom" class="btn btn-warning">Who's that Pokémon?</a>
-            </div>
-        </div>
-    
-
-        <div class="col">
-            <div id="homepage-random-cards">
-            <div class="card mb-3" id="random-pokemon" style="max-width: 540px;">
-              <div class="row g-0">
-                <div class="col-md-4">
-                  <img id="random" src="{{ random_card.image_path }}" class="img-fluid rounded-start" alt="...">
-                </div>
-                <div class="col-md-8">
-                  <div class="card-body">
-                    <h5 class="card-title"><strong>It's {{ random_card.name }}!</strong></h5>
-                    <p class="card-text">{{ random_card.flavor_text }}</p>
-                    <a href="/usercards/{{ random_card.card_id }}" class="card-link">Catch</a> 
-            
-                    
-
-                  </div>
-                </div>
-            </div>
-              </div>
-              <h1 id="test"></h1>
-            </div>
-
-
-
+  <div class="row">
+    <div class="col">
+      <div class="homepage-cards">
+        <h1 class="display-3">Gotta catch 'em all?</h1>
+        <h1 class="display-6">Start your collection today.</h1>
+        <br><br>
+        <button id="btnrandom" class="btn btn-warning">Who's that Pokémon?</a>
       </div>
     </div>
+    
+    <div class="col">
+      <div id="homepage-random-cards">
+        <div class="card mb-3" id="random-pokemon2" style="max-width: 540px; display:none">
+          <div class="row g-0">
+            <div class="col-md-4" id="test-img"></div>
+            <div class="col-md-8">
+              <h5 id="test-title" class="card-title"></h5>
+              <p id="test-text" class="card-text"></p>
+              <div class="card-body" id="test-card-body"></div>
+            </div>
+          </div>
+        </div>
+      </div>  
     </div>
-</row>
-<script src="/static/js/script.js"></script>
-
+  </div>
+<script type="text/javascript" src="/static/js/script.js"></script>
 
 </body>
 {% endblock %}

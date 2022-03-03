@@ -1,118 +1,29 @@
 'use-strict';
 
-// const randomBtn = document.querySelector('#btnrandom');
-// const randomPokemon = document.querySelector('.homepage-random-cards')
-
-// randomBtn.addEventListener('click', () => {
-//     if (randomPokemon.style.display === 'none') {
-//         randomPokemon.style.display = 'block';
-//     } else {
-//         randomPokemon.style.display = 'none'
-//          }
-// });
-
-// function replaceCard(results) {
-//     document.querySelector('#fortune-text').innerHTML = results;
-//   }
-  
-//   function showCard(evt) {
-//     fetch('/')
-//       .then(response => response.text())
-//       .then(replaceFortune);
-//   }
-  
-//   document.querySelector('#get-fortune-button').addEventListener('click', showFortune);
+console.log('JS IS WORKING')
 
 
-  const testDiv = document.querySelector('#test')
+  const homepageBtn = document.getElementById('btnrandom');
+  const randomCard = document.getElementById("random-pokemon2")
+  console.log(randomCard)
+  const testImg = document.getElementById('test-img')
+  const testCardBody = document.getElementById('test-card-body')
+  const testTitle = document.getElementById('test-title')
+  const testText = document.getElementById('test-text')
 
-  document.querySelector('#btnrandom').addEventListener('click', () => {
+  homepageBtn.addEventListener('click', (evt) => {
+    evt.preventDefault;
     fetch('/random')
-      .then(response => response.text())
+      .then(response => response.json())
       .then(result => {
-        console.log("hello");
-        console.log(result);
-        // testDiv.innerText = result;
-        // const randomCard = result.random_card;
-        // document
-        //   .querySelector('#homepage-random-cards')
-        //   .innertHTML = `<div><src="${randomCard}"></div>`;
+        randomCard.style.display = "block";
+        testImg.innerHTML = `<img id="random" src="${result.data.image_path}" class="img-fluid rounded-start" alt="...">`
+        testTitle.innerHTML = `<strong>It's ${result.data.name}!</strong>`
+        testText.innerHTML = `${result.data.flavor_text}`
+        testCardBody.innerHTML = `<a href="/usercards/${result.data.card_id}" class="card-link">Catch</a> `
       });
   });
 
 
 
 
-
-
-
-// const randomBtn = document.querySelector('#btnrandom');
-// const randomPokemon = document.querySelector('.homepage-random-cards')
-
-// randomBtn.addEventListener('click', () => {
-//     fetch('/')
-//         .then(response => response.text())
-//         .then(randomCardResponse => {
-//             if (randomPokemon.style.display === 'none') {
-//                 randomPokemon.style.display = 'block';
-//             } else {
-//                 randomPokemon.style.display = 'none'
-//                 }
-//         });
-
-
-// fetch('https://pokeapi.co/api/v2/berry/')
-//     .then(response => response.json())
-//     .then(berriesResponse => {
-//         let berryList = [];
-//         for (const berry in berriesResponse.results) {
-//             berryList.push(berriesResponse.results[berry]['name']);
-//                 document.querySelector('#berries').innerHTML = berryList.join(', ');
-//     }
-// });
-
-// const randomBtn = document.querySelector('#btnrandom');
-// const randomPokemon = document.querySelector('.homepage-random-cards')
-
-// randomBtn.addEventListener('click', () => {
-//   const url = "/data/cards.json";
-
-//   fetch(url)
-//     .then(response => response.json())
-//     .then(randomResponse => {
-
-//         // # card_id = randint(1, 200)
-//         // # random_card = crud.get_card_by_id(card_id)
-
-//         let pokemonCards = [];
-
-//         for (const card in randomResponse.results) {
-//             pokemonCards.push(randomResponse.results['name']);
-//                 document.querySelector('#berries').innerHTML = berryList.join(', ');
-//     }
-
-//         if (randomPokemon.style.display === 'none') {
-//             randomPokemon.style.display = 'block';
-//         } else {
-//             randomPokemon.style.display = 'none'
-//              }
-//     });
-// });
-
-
-
-
-
-// const button = document.querySelector('#update-status');
-
-// button.addEventListener('click', () => {
-//   const queryString = new URLSearchParams({order: 123}).toString();
-//   // you could also hard code url to '/status?order=123'
-//   const url = `/status?${queryString}`;
-
-//   fetch("/random")
-//     .then(response => response.text())
-//     .then(status => {
-//       document.querySelector('#order-status').innerHTML = status;
-//     });
-// });

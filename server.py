@@ -1,5 +1,5 @@
 """Server for Pokemon Card app."""
-from flask import Flask, render_template, request, flash, session, redirect
+from flask import Flask, render_template, request, flash, session, redirect, jsonify
 from model import Rarity, Card, db, connect_to_db
 from jinja2 import StrictUndefined
 import crud
@@ -26,13 +26,19 @@ def homepage():
 
 @app.route('/random')
 def random():
-
     #get random card to display on homepage
     card_id = randint(1, 100)
     random_card = crud.get_card_by_id(card_id)
+    print(random_card, 'RANDOM WORKS')
+    data = {
+        "card_id": random_card.card_id,
+        "image_path": random_card.image_path,
+        "name": random_card.name,
+        "flavor_text": random_card.flavor_text,
+    }
   
-    # return random_card
-    return "hello"
+    return jsonify({"data": data})
+    # return "hello"
 
 @app.route("/create-account")
 def view_register_user():
