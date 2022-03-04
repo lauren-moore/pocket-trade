@@ -12,11 +12,25 @@ img{
   padding: 10px 125px 10px 80px;
 }
 
+#random-title{
+  padding-top: 20px;
+  padding-left: 5px;
+}
+
+#random-text{
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#random-link{
+  padding-left: 5px;
+}
+
 #random {
   padding: 15px 15px 15px 25px;
 }
 
-#random-pokemon{
+#random-pokemon2{
   border-radius: 2em;
   /* padding-top: 80px; */
   /* text-align: center; */

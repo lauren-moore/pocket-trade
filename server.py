@@ -29,7 +29,6 @@ def random():
     #get random card to display on homepage
     card_id = randint(1, 100)
     random_card = crud.get_card_by_id(card_id)
-    print(random_card, 'RANDOM WORKS')
     data = {
         "card_id": random_card.card_id,
         "image_path": random_card.image_path,
@@ -38,7 +37,7 @@ def random():
     }
   
     return jsonify({"data": data})
-    # return "hello"
+
 
 @app.route("/create-account")
 def view_register_user():
@@ -46,6 +45,19 @@ def view_register_user():
 
     return render_template('create_account.html')
 
+
+@app.route('/rarities')
+def show_rarities():
+    """Browse cards by rarity."""
+
+    rarities = crud.get_rarity()
+    for rarity in rarities:
+        data = {
+            "name": rarity.name,
+            "rarity_id": rarity.rarity_id
+        }
+
+    return jsonify({"data": data})
 
 @app.route('/cards')
 def all_cards():
