@@ -59,6 +59,22 @@ def show_rarities():
 
     return jsonify({"data": data})
 
+@app.route('/get-cards')
+def get_cards():
+    """View cards page."""
+
+    cards = crud.get_cards()
+    rarities = crud.get_rarity()
+
+    json_cards = []
+
+    for card in cards:
+        json_cards.append({'img_path': card.image_path, 'card_id': card.card_id, 'rarity': card.rarity})
+    
+    print(json_cards, "JSON CARDS")
+    
+    return jsonify({"data": json_cards})
+
 @app.route('/cards')
 def all_cards():
     """View cards page."""
@@ -66,7 +82,6 @@ def all_cards():
     cards = crud.get_cards()
     rarities = crud.get_rarity()
     
-
     return render_template('all_cards.html',
                             cards=cards,
                             rarities=rarities)
