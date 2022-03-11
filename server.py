@@ -69,7 +69,7 @@ def get_cards():
     json_cards = []
 
     for card in cards:
-        json_cards.append({'img_path': card.image_path, 'card_id': card.card_id, 'rarity': card.rarity})
+        json_cards.append({'img_path': card.image_path, 'card_id': card.card_id, 'rarity': card.rarity.name})
     
     print(json_cards, "JSON CARDS")
     
