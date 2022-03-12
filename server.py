@@ -64,8 +64,6 @@ def get_cards():
     """View cards page."""
 
     cards = crud.get_cards()
-    rarities = crud.get_rarity()
-
     json_cards = []
 
     for card in cards:

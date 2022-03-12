@@ -2,7 +2,64 @@ body {
 max-width: 100%;
 overflow-x: hidden;
 padding: 0px 80px 0px 80px;
+/* width: 1200px; */
 }
+
+#homepage-animation-1 {
+  -webkit-animation: 3s ease 0s normal forwards 1 fadein1;
+  animation: 3s ease 0s normal forwards 1 fadein1;
+}
+
+@keyframes fadein1{
+  0% { opacity:0; }
+  50% { opacity:1; }
+  100% { opacity:1; }
+}
+
+@-webkit-keyframes fadein1{
+  0% { opacity:0; }
+  50% { opacity:1; }
+  100% { opacity:1; }
+}
+
+
+#homepage-animation-2 {
+  -webkit-animation: 3s ease 0s normal forwards 1 fadein2;
+  animation: 3s ease 0s normal forwards 1 fadein2;
+}
+
+@keyframes fadein2{
+  0% { opacity:0; }
+  40% { opacity:0; }
+  100% { opacity:1; }
+}
+
+@-webkit-keyframes fadein2{
+  0% { opacity:0; }
+  40% { opacity:0; }
+  100% { opacity:1; }
+}
+
+
+#btnrandom {
+  -webkit-animation: 4s ease 0s normal forwards 1 fadein3;
+  animation: 4s ease 0s normal forwards 1 fadein3;
+}
+
+@keyframes fadein3{
+  0% { opacity:0; }
+  60% { opacity:0; }
+  100% { opacity:1; }
+}
+
+@-webkit-keyframes fadein3{
+  0% { opacity:0; }
+  60% { opacity:0; }
+  100% { opacity:1; }
+}
+
+
+
 
 img{
   max-width: 200px;
@@ -97,8 +154,6 @@ img{
 #header{
   padding: 30px;
 }
-
-
 
 .navbar {
   background: none;
