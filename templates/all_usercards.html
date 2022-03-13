@@ -22,7 +22,7 @@
   {% for usercard in usercards %}
   {% if usercard.card_id == card.card_id and usercard.sold == False %}
   
-  <div class="card mb-3" style="max-width: 540px;">
+  <div class="usercard" style="max-width: 540px;">
     <div class="row g-0">
       <div class="col-md-4">
         <img src="{{ card.image_path }}" class="img-fluid rounded-start" alt="...">
@@ -32,7 +32,7 @@
           <h5 class="card-title">{{ card.name }}</h5>
           <p class="card-text">{{ card.flavor_text }}</p>
           <p class="card-text"><small class="text-muted">Trainer: {{ usercard.user.name }} </small></p>
-          <a href="/cards/{{ usercard.user_card_id }}" class="card-link">Card Details</a> 
+          <a class="btn btn-primary" href="/cards/{{ usercard.user_card_id }}" class="card-link">Card Details</a> 
           
         </div>
       </div>

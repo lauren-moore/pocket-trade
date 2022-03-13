@@ -20,6 +20,6 @@ homepageBtn.addEventListener('click', (evt) => {
       testImg.innerHTML = `<img id="random" src="${result.data.image_path}" class="img-fluid rounded-start" alt="...">`
       randomTitle.innerHTML = `<strong>It's ${result.data.name}!</strong>`
       randomText.innerHTML = `${result.data.flavor_text}`
-      randomLink.innerHTML = `<a href="/usercards/${result.data.card_id}" class="card-link">Catch</a> `
+      randomLink.innerHTML = `<a href="/usercards/${result.data.card_id}">Catch`
     });
 });  
