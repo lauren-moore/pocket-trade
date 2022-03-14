@@ -1,52 +1,47 @@
 {% extends 'base.html' %}
-
 {% block body %}
 
-<!-- <h1 id="header" style="text-align:center"><strong>{{ usercard.card.name }}</strong></h1> -->
+<div class="padding">
+	<div class="mx-auto" id="grid-card-details" style="width: 1200px;">
+		<div class="row">
+			
+			<img src="{{ usercard.card.image_path }}">
+		</div>
+		<div class="col">
+			{% if usercard.card.pokedex_number < 10 %} <h2 id="header" style="text-align:center"><strong>{{
+					usercard.card.name }} #00{{ usercard.card.pokedex_number }}</strong></h2>
+				{% elif usercard.card.pokedex_number < 100 and usercard.card.pokedex_number> 9 %}
+					<h2 id="header" style="text-align:center"><strong>{{ usercard.card.name }} #0{{
+							usercard.card.pokedex_number }}</strong></h2>
+					{% elif usercard.card.pokedex_number > 100 %}
+					<h2 id="header" style="text-align:center"><strong>{{ usercard.card.name }} #{{
+							usercard.card.pokedex_number }}</strong></h2>
+					{% endif %}
+					<blockquote class="blockquote">
+						<p style="text-align:center">{{ usercard.card.flavor_text }}</p>
 
-<!-- <div class="container"> -->
-    <div class="padding">
-    <div class="mx-auto" id="grid-card-details" style="width: 1200px;">
-    <!-- <div class="grid-card-details"> -->
-        <div class="row">
-            <img src="{{ usercard.card.image_path }}">
-        </div>
-        <div class="col">
-            {% if usercard.card.pokedex_number < 10 %}
-            <h2 id="header" style="text-align:center"><strong>{{ usercard.card.name }} #00{{ usercard.card.pokedex_number }}</strong></h2>
-            {% elif usercard.card.pokedex_number < 100 and usercard.card.pokedex_number > 9 %}
-            <h2 id="header" style="text-align:center"><strong>{{ usercard.card.name }} #0{{ usercard.card.pokedex_number }}</strong></h2>
-            {% elif usercard.card.pokedex_number > 100 %}
-            <h2 id="header" style="text-align:center"><strong>{{ usercard.card.name }} #{{ usercard.card.pokedex_number }}</strong></h2>
-            {% endif %}
-            <blockquote class="blockquote">
-            <p style="text-align:center">{{ usercard.card.flavor_text }}</p>
-            
-        </blockquote>
-        
-            <div class="price-card text-center bg-light">
-                <div class="card-body">
-                    <h5 class="card-title">Price</h5>
-                        <div class="card-text">${{ usercard.card.price }}</div>
-                        <p></p>
-                        <form action="/cart" method="POST">
-                            <a class="btn btn-primary" href="/add_to_cart/{{ usercard.user_card_id }}">Add to cart</a>
-                        </form>
-                        </div>
-                    </div>
-        
-       
-                    <p></p>
-    <div class="card-details">
+					</blockquote>
 
-        <h3>Trainer:</h3>
+					<div class="price-card text-center bg-light">
+						<div class="card-body">
+							<h5 class="card-title">Price</h5>
+								<div class="card-text">${{ usercard.card.price }}</div>
+								<p></p>
+								<form action="/cart" method="POST">
+								<a class="btn btn-primary" href="/add_to_cart/{{ usercard.user_card_id }}">Add to
+									cart</a>
+								</form>
+						</div>
+					</div>
+					<p></p>
+					<div class="card-details">
+						<h3>Trainer:</h3>
+						<ul>
+							<li>Name: {{ usercard.user.name }}</li>
+							<li>Contact Info: {{ usercard.user.email }}</li>
+						</ul>
+					</div>
+		</div>
+	</div>
 
-        <ul>
-            <li>Name: {{ usercard.user.name }}</li>
-            <li>Contact Info: {{ usercard.user.email }}</li>
-        </ul>
-    </div>
-</div>
-</div>
-
-{% endblock %}
+	{% endblock %}		

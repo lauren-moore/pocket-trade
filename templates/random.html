@@ -1,10 +1,9 @@
 {% extends 'base.html' %}
-{% block title %}Pocket Trade Homepage{% endblock %}
 
 {% block body %}
 
 <div class="col">
-    <div class="homepage-random-cards">
+  <div class="homepage-random-cards">
     <div class="card mb-3" id="random-pokemon" style="max-width: 540px;">
       <div class="row g-0">
         <div class="col-md-4">
@@ -14,17 +13,11 @@
           <div class="card-body">
             <h5 class="card-title"><strong>It's {{ random_card.name }}!</strong></h5>
             <p class="card-text">{{ random_card.flavor_text }}</p>
-            <a href="/usercards/{{ random_card.card_id }}" class="card-link">Catch</a> 
-    
-            
+            <a href="/usercards/{{ random_card.card_id }}" class="card-link">Catch</a>
           </div>
         </div>
-    </div>
       </div>
     </div>
-    </div>
-</row>
-
-
-</body>
+  </div>
+</div>
 {% endblock %}

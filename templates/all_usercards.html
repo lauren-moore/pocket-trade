@@ -1,8 +1,7 @@
 {% extends 'base.html' %}
 {% block title %}All UserCards{% endblock %}
-
-
 {% block body %}
+
 
 {% if card.pokedex_number < 10 %}
 <h1 id="header" style="text-align:center"><strong>{{ card.name }} #00{{ card.pokedex_number }}</strong></h1>
@@ -12,92 +11,28 @@
 <h1 id="header" style="text-align:center"><strong>{{ card.name }} #{{ card.pokedex_number }}</strong></h1>
 {% endif %}
 
-
-
-        
-  <!-- <div class="col py-2"> -->
-    <div class="container">
-      <div class="grid-usercards">
-          
-  {% for usercard in usercards %}
-  {% if usercard.card_id == card.card_id and usercard.sold == False %}
-  
-  <div class="usercard" style="max-width: 540px;">
-    <div class="row g-0">
-      <div class="col-md-4">
-        <img src="{{ card.image_path }}" class="img-fluid rounded-start" alt="...">
-      </div>
-      <div class="col-md-8">
-        <div class="card-body">
-          <h5 class="card-title">{{ card.name }}</h5>
-          <p class="card-text">{{ card.flavor_text }}</p>
-          <p class="card-text"><small class="text-muted">Trainer: {{ usercard.user.name }} </small></p>
-          <a class="btn btn-primary" href="/cards/{{ usercard.user_card_id }}" class="card-link">Card Details</a> 
-          
-        </div>
-      </div>
-      
-    </div>
-    
-  </div>
- 
- 
-  
-  
-  <!-- <div class="card" style="width: 18rem;">
-    <div class="container-fluid">
-      <div class="card-body">
-        <div style="float:middle">
-    <img src="{{ card.image_path }}" class="card-img-top" alt="...">
-    
-    <div class="card-body">
-      <h5 class="card-title">{{ card.name }}</h5>
-    </div>
-    </div>
-  </div> -->
-    <!-- <ul class="list-group list-group-flush"> -->
-      <!-- <div style="padding:.5em"> -->
-      <!-- <li class="list-group-item">Sold by: {{ usercard.user.name }}</li>
-      <li class="list-group-item">Contact info: {{ usercard.user.email }}</li>
-    
-    <div class="card-body">
-      <a href="/cards/{{ usercard.user_card_id }}" class="card-link">Card Details</a>
-      
-      
-    </div>
-  </div> -->
-
-
-    <!-- <div class="container-fluid">
-        <div class="card col-5 mt-4">
-          <div class="card text-white bg-danger mb-3">
-          <div class="card-header">
-            <div class="clearfix">
-              <h3 style="float:left">
-                {{ usercard.user.name }}</h3>
-              <div style="float:right">
-                <a href="/cards/{{ usercard.user_card_id }}">Card Details</a>
+  <div class="container">
+    <div class="grid-usercards">
+      {% for usercard in usercards %}
+      {% if usercard.card_id == card.card_id and usercard.sold == False %}
+        <div class="usercard" style="max-width: 540px;">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img src="{{ card.image_path }}" class="img-fluid rounded-start" alt="...">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">{{ card.name }}</h5>
+                <p class="card-text">{{ card.flavor_text }}</p>
+                <p class="card-text"><small class="text-muted">Trainer: {{ usercard.user.name }} </small></p>
+                <a class="btn btn-primary" href="/cards/{{ usercard.user_card_id }}" class="card-link">Card Details</a> 
               </div>
             </div>
           </div>
-          </div>
-      <div style="padding:.5em">
-      <ul>
-        <li>
-          Sold by: {{ usercard.user.name }}
-        </li>
-        <li>
-          Contact info: {{ usercard.user.email }}
-        </li>
-      </ul>
-
-        
         </div>
-         
-        </div>
-        </div> -->
-      
         {% endif %}
-    {% endfor %}
- 
+        {% endfor %}
+    </div>
+  </div> 
+  
 {% endblock %}

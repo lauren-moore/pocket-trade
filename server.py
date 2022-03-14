@@ -197,7 +197,6 @@ def add_to_cart(user_card_id):
 def checkout():
     """Checkout customer and process payment."""
 
-
     return render_template('checkout.html')
 
 
