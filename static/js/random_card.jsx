@@ -51,15 +51,14 @@ const TradingCardContainer = () => {
 
   const rarityButtons = rarities.map((rarity) => <RarityCardButton handleClick={() => setCardType(rarity)} rarity={rarity} key={rarity} />)
   const filteredTradingCards = filteredCards.map((card) => <TradingCard {...card} />)
-  // const tradingCards = allCards.map((card) => <TradingCard {...card} />)
 
   console.log(filteredCards, 'line 59 FILTERED CARDS')
   return (
     <React.Fragment>
       <td>
         <div className="browser-menu">
-          <span className="fs-5 d-none d-sm-inline">Browse by Rarity</span>
-            <ul className="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+          <span className="fs-5"><strong>Browse by Card Rarity</strong></span>
+            <ul className="nav nav-pills flex-column mb-sm-auto mb-0 align-items-sm-start" id="menu">
               {rarities.map((rarity) => (
                 <RarityCardButton 
                   handleClick={() => setCardType(rarity)} 

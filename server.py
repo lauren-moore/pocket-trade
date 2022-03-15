@@ -124,16 +124,15 @@ def show_card(user_card_id):
     return render_template('card_details.html', usercard=usercard)
 
 
-@app.route('/users')
-def all_users():
-    """View users page."""
+# @app.route('/users')
+# def all_users():
+#     """View users page."""
 
-    users = crud.get_users()
+#     users = crud.get_users()
 
-    return render_template('all_users.html', users=users)
+#     return render_template('all_users.html', users=users)
 
 
-# @app.route('/users/<user_id>')
 @app.route('/collection/<user_id>')
 def show_user(user_id):
     """Show user details."""

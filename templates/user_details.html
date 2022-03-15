@@ -27,7 +27,7 @@
 <div class="mx-auto" id="card-collection" style="width: 1200px;">
   <h2>Card Collection</h2>
   <div class="col py-5">
-    <div class="grid-cards">
+    <div class="grid-cards-collection">
         {% for usercard in usercards %}
           {% if usercard.user_id == user.user_id and usercard.sold == False %}
             <a href="/cards/{{ usercard.user_card_id }}"><img src="{{ usercard.card.image_path}}" alt="photo"></a>

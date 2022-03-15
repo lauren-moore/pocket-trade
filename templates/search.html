@@ -1,20 +1,23 @@
 {% extends 'base.html' %}
-
 {% block body %}
 
-<div class="mx-auto" style="width: 1200px;">
-  <h2 style="padding-top:30px;">You searched for: <em>{{ searched }}</em> </h2>
-    <div class="col py-5">  
-      <div class="grid-cards">
-        {% if results %}
-          {% for card in results %}
-            <a href="/usercards/{{ card.card_id }}"><img src="{{ card.image_path }}"></a>
-          {% endfor %}
-        {% else %}
-          Your search term <strong>{{ searched }}</strong> was not found.
-        {% endif %}
-      </div>
-    </div>
-</div>  
+<div class="padding">
+  <div class="mx-auto" id="grid-card-details" style="width: 1200px;">
+    <div class="mx-auto" style="width: 1200px;">
+      <h2 style="padding-left: 75px;">You searched for: <em>{{ searched }}</em></h2>
+        <div class="col py-5">  
+          <div class="grid-cards-search">
+            {% if results %}
+              {% for card in results %}
+                <a href="/usercards/{{ card.card_id }}"><img src="{{ card.image_path }}"></a>
+              {% endfor %}
+            {% else %}
+              Your search term <strong>{{ searched }}</strong> was not found.
+            {% endif %}
+          </div>
+        </div>
+    </div>  
+  </div>
+</div>
 
 {% endblock %}
