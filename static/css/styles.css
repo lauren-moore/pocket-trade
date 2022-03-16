@@ -97,7 +97,7 @@ img{
 }
 
 #random-link{
-  padding-left: 5px;
+  padding-left: 7px;
 }
 
 #random {
@@ -172,6 +172,23 @@ img{
   padding-right: 80px;
   width: 250px;
 
+}
+
+#all-cards-button {
+  text-decoration: none;
+  padding-top:15px;
+ 
+}
+
+#all-cards-button:hover {
+  text-decoration: none;
+  padding-top:15px;
+  color: red;
+ 
+}
+
+.nav-link:hover {
+  color:red;
 }
 
 .img-fluid {

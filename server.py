@@ -27,7 +27,7 @@ def homepage():
 @app.route('/random')
 def random():
     #get random card to display on homepage
-    card_id = randint(1, 100)
+    card_id = randint(1, 250)
     random_card = crud.get_card_by_id(card_id)
     data = {
         "card_id": random_card.card_id,
@@ -298,10 +298,12 @@ def search():
     
     searched = request.form.get("searched")
     results = crud.get_card_by_name(searched)
+    num_of_results = len(results)
    
     return render_template('search.html',
                             results=results,
-                            searched=searched)
+                            searched=searched,
+                            num_of_results=num_of_results)
 
 
 

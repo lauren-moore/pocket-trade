@@ -47,7 +47,7 @@
               <a href="#exampleModal" class="nav-link" data-bs-toggle="modal" data-bs-target="#logInModal">Log In</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/create-account">Register</a>
+              <a class="nav-link" data-bs-toggle="modal" data-bs-target="#registerModal" href="/create-account">Register</a>
             </li>
             {% else %}
             <li class="nav-item">
@@ -88,6 +88,32 @@
       </div>
     </div>
 
+
+   <!-- Register modal -->
+    <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Register</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form action="/users" method="POST">
+                Name
+                <p><input type="text" name="name"></p>
+                Email 
+                <p><input type="text" name="email"></p>
+                Password 
+                <p><input type="password" name="password"></p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- Search feature -->
     <nav class="navbar-search">

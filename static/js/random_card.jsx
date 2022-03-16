@@ -58,7 +58,9 @@ const TradingCardContainer = () => {
       <td>
         <div className="browser-menu">
           <span className="fs-5"><strong>Browse by Card Rarity</strong></span>
+            
             <ul className="nav nav-pills flex-column mb-sm-auto mb-0 align-items-sm-start" id="menu">
+              <a href="/cards" id="all-cards-button">All Cards</a>
               {rarities.map((rarity) => (
                 <RarityCardButton 
                   handleClick={() => setCardType(rarity)} 

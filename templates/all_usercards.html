@@ -4,11 +4,11 @@
 
 
 {% if card.pokedex_number < 10 %}
-<h1 id="header" style="text-align:center"><strong>{{ card.name }} #00{{ card.pokedex_number }}</strong></h1>
+<h1 class="display-6" id="header" style="text-align:center"><strong>{{ card.name }} #00{{ card.pokedex_number }}</strong></h1>
 {% elif card.pokedex_number < 100 and card.pokedex_number > 9 %}
-<h1 id="header" style="text-align:center"><strong>{{ card.name }} #0{{ card.pokedex_number }}</strong></h1>
+<h1 class="display-6" id="header" style="text-align:center"><strong>{{ card.name }} #0{{ card.pokedex_number }}</strong></h1>
 {% elif card.pokedex_number > 100 %}
-<h1 id="header" style="text-align:center"><strong>{{ card.name }} #{{ card.pokedex_number }}</strong></h1>
+<h1 class="display-6" id="header" style="text-align:center"><strong>{{ card.name }} #{{ card.pokedex_number }}</strong></h1>
 {% endif %}
 
   <div class="container">

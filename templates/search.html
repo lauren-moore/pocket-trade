@@ -4,7 +4,8 @@
 <div class="padding">
   <div class="mx-auto" id="grid-card-details" style="width: 1200px;">
     <div class="mx-auto" style="width: 1200px;">
-      <h2 style="padding-left: 75px;">You searched for: <em>{{ searched }}</em></h2>
+      <h1 class="display-5" style="padding-left: 75px;">You searched for: <strong><em>{{ searched }}</em></strong></h1>
+        <blockquote class="blockquote" style="padding-left: 80px;"><strong>{{ num_of_results }}</strong> result(s)</blockquote>
         <div class="col py-5">  
           <div class="grid-cards-search">
             {% if results %}
@@ -12,6 +13,7 @@
                 <a href="/usercards/{{ card.card_id }}"><img src="{{ card.image_path }}"></a>
               {% endfor %}
             {% else %}
+            <div class="container-fluid" style="width: 1200px;">
               Your search term <strong>{{ searched }}</strong> was not found.
             {% endif %}
           </div>

@@ -89,8 +89,8 @@ class CardTypes(db.Model):
     types_id = db.Column(db.Integer, db.ForeignKey("types.types_id"))
     card_id = db.Column(db.Integer, db.ForeignKey("cards.card_id"))
 
-    # card = db.relationship("Card", backref="cardtypes")
-    # types = db.relationship("Types", backref="cardtypes")
+    card = db.relationship("Card", backref="cardtypes")
+    types = db.relationship("Types", backref="cardtypes")
 
 
 class UserCard(db.Model):
@@ -112,6 +112,7 @@ class UserCard(db.Model):
     def __repr__(self):
         return f'<Card {self.card_id} belongs to user {self.user_id}>'
 
+
 class Order(db.Model):
     """A receipt of card purchase."""
  
@@ -131,25 +132,6 @@ class Order(db.Model):
         return f'<Order order_id={self.order_id} user_card={self.user_card_id} user={self.user_id}>'
 
 
-# class ShoppingCart(db.Model):
-#     """A shopping cart for users to add potential purchases."""
-
-#     __tablename__ = "shopping_carts"
-
-#     shopping_cart_id = db.Column(db.Integer,
-#                         autoincrement=True,
-#                         primary_key=True,
-#                         nullable=False)
-#     user_id = db.Column(db.Integer, db.ForeignKey("users.user_id"))
-#     user_card_id = db.Column(db.Integer, db.ForeignKey("user_cards.user_card_id"))
-
-#     user = db.relationship("User", backref="shopping_cart")
-#     user_cards = db.relationship("UserCard", backref="shopping_carts")
-    
-#     def __repr__(self):
-#         return f'<Shopping cart shopping_cart_id={self.shopping_cart_id} user_id={self.user_id} user_card_id={self.user_card_id}>'
-
-
 def connect_to_db(flask_app, db_uri="postgresql:///poke", echo=True):
     flask_app.config["SQLALCHEMY_DATABASE_URI"] = db_uri
     flask_app.config["SQLALCHEMY_ECHO"] = echo
@@ -159,14 +141,6 @@ def connect_to_db(flask_app, db_uri="postgresql:///poke", echo=True):
     db.init_app(flask_app)
 
     print("Connected to the db!")
-
-
-
-
-
-
-
-
 
 if __name__ == "__main__":
     from server import app
