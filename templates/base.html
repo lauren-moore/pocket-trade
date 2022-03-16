@@ -36,7 +36,7 @@
               <a class="nav-link" id="navbar" aria-current="page" href="/cards">Pokédex</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/cart">My Cart</a>
+              <a class="nav-link" id="navbar" href="/cart">My Cart</a>
             </li>
           </ul>
           <span class="nav-item">
@@ -44,17 +44,17 @@
               
             {% if 'user_id' not in session %}
             <li class="nav-item">
-              <a href="#exampleModal" class="nav-link" data-bs-toggle="modal" data-bs-target="#logInModal">Log In</a>
+              <a href="#exampleModal" class="nav-link" id="navbar"  data-bs-toggle="modal" data-bs-target="#logInModal">Log In</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" data-bs-toggle="modal" data-bs-target="#registerModal" href="/create-account">Register</a>
+              <a class="nav-link" id="navbar" data-bs-toggle="modal" data-bs-target="#registerModal" href="/create-account">Register</a>
             </li>
             {% else %}
             <li class="nav-item">
-              <a class="nav-link" href="/collection/{{ session['user_id'] }}">My Collection</a>
+              <a class="nav-link" id="navbar" href="/collection/{{ session['user_id'] }}">My Collection</a>
             </li>
             <li class="nav-item">
-               <a class="nav-link" href="/logout">Log Out</a>
+               <a class="nav-link" id="navbar" href="/logout">Log Out</a>
             </li>
             {% endif %}
           </span>

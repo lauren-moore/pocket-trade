@@ -201,6 +201,10 @@ img{
   color:red;
 }
 
+#navbar:focus {
+  background-color: transparent;
+}
+
 
 .img-fluid {
   padding-left: 20px;
