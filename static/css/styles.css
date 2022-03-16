@@ -100,6 +100,10 @@ img{
   padding-left: 7px;
 }
 
+#header-pokedex {
+  padding: 30px;
+}
+
 #random {
   padding: 15px 15px 15px 25px;
 }
@@ -187,9 +191,16 @@ img{
  
 }
 
+.nav-link:focus {
+  background-color: #FF5733;
+  color: white;
+  width: 100%;
+}
+
 .nav-link:hover {
   color:red;
 }
+
 
 .img-fluid {
   padding-left: 20px;

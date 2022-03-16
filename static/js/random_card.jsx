@@ -27,8 +27,9 @@ const RarityCardButton = (props) => {
 const TradingCardContainer = () => {
   const [allCards, setAllCards] = React.useState([]);
   const [filteredCards, setFilteredCards] = React.useState([]);
-  const [cardType, setCardType] = React.useState('');
+  const [cardType, setCardType] = React.useState('All Cards');
   const [rarities, setRarities] = React.useState([]);
+  const [header, setHeader] = React.useState('All Cards');
  
   React.useEffect(() => {
     const fetchData = async () => {
@@ -47,25 +48,26 @@ const TradingCardContainer = () => {
   React.useEffect(() => {
     const filteredCards = allCards.filter((card) => card.rarity === cardType)
     setFilteredCards(filteredCards)
+    setHeader(cardType)
   }, [cardType])
 
-  const rarityButtons = rarities.map((rarity) => <RarityCardButton handleClick={() => setCardType(rarity)} rarity={rarity} key={rarity} />)
   const filteredTradingCards = filteredCards.map((card) => <TradingCard {...card} />)
 
   console.log(filteredCards, 'line 59 FILTERED CARDS')
   return (
     <React.Fragment>
-      <td>
-        <div className="browser-menu">
+      {/* <alert><strong>{header}</strong></alert> */}
+      
+      <td style={{ verticalAlign: "text-top" }}>
+        <div className="browser-menu" style={{ verticalAlign: "text-top" }}>
           <span className="fs-5"><strong>Browse by Card Rarity</strong></span>
-            
             <ul className="nav nav-pills flex-column mb-sm-auto mb-0 align-items-sm-start" id="menu">
               <a href="/cards" id="all-cards-button">All Cards</a>
               {rarities.map((rarity) => (
                 <RarityCardButton 
-                  handleClick={() => setCardType(rarity)} 
+                  handleClick={() => setCardType(rarity)}
                   rarity={rarity} 
-                  key={rarity} 
+                  key={rarity}
                 />
               ))}
             </ul>
@@ -86,4 +88,5 @@ const TradingCardContainer = () => {
 }
   
 ReactDOM.render(<TradingCardContainer />, document.getElementById('pokedex'));
+
   
