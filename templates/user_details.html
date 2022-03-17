@@ -33,8 +33,8 @@
             <a href="/cards/{{ usercard.user_card_id }}"><img src="{{ usercard.card.image_path}}" alt="photo"></a>
           {% endif %}
         {% endfor %}
-        {% if usercards|length == 0 %}
-            Card Collection is empty. 
+        {% if not usercards %}
+            <h1 class="display-6">Card Collection is empty.</h1>
         {% endif %}
     </div>
   </div>
