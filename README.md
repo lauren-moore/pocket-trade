@@ -19,4 +19,4 @@ As a Hotel Administration graduate from UNLV, Laurén's background is in all thi
 
 Let's connect on [LinkedIn!](https://www.linkedin.com/in/laurencaroleen/)
 
-
+![image](/static/img/Business_card.jpg)
