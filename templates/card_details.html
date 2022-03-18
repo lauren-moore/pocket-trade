@@ -4,23 +4,26 @@
 <div class="padding">
 	<div class="mx-auto" id="grid-card-details" style="width: 1200px;">
 		<div class="row">
-			<img src="{{ usercard.card.image_path }}">
+			<img src="{{ usercard.card.image_path }}" id="card-close-up">
 		</div>
 		<div class="col">
-			{% if usercard.card.pokedex_number < 10 %} <h1 class="display-6" id="header" style="text-align:center"><strong>{{
+			{% if usercard.card.pokedex_number < 10 %} <h1 class="display-6" id="header-card-details" style="text-align:center"><strong>{{
 					usercard.card.name }} #00{{ usercard.card.pokedex_number }}</strong></h1>
 				{% elif usercard.card.pokedex_number < 100 and usercard.card.pokedex_number> 9 %}
-					<h1 class="display-6" id="header" style="text-align:center"><strong>{{ usercard.card.name }} #0{{
+					<h1 class="display-6" id="header-card-details" style="text-align:center"><strong>{{ usercard.card.name }} #0{{
 							usercard.card.pokedex_number }}</strong></h1>
 					{% elif usercard.card.pokedex_number > 100 %}
-					<h1 class="display-6" id="header" style="text-align:center"><strong>{{ usercard.card.name }} #{{
+					<h1 class="display-6" id="header-card-details" style="text-align:center"><strong>{{ usercard.card.name }} #{{
 							usercard.card.pokedex_number }}</strong></h1>
 					{% endif %}
-					<blockquote class="blockquote">
+
+					<div id="card-details-info">
+					<blockquote class="blockquote" style="padding-top:30px;">
 						<p style="text-align:center">{{ usercard.card.flavor_text }}</p>
 
 					</blockquote>
 
+					
 					<div class="price-card text-center bg-light">
 						<div class="card-body">
 							<h5 class="card-title">Price</h5>
@@ -40,6 +43,7 @@
 							<li>Contact Info: {{ usercard.user.email }}</li>
 						</ul>
 					</div>
+</div>
 		</div>
 	</div>
 

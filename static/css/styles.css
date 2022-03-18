@@ -10,6 +10,10 @@ background: url("/static/img/pokemon_bg.png") no-repeat center center fixed;
 
 }
 
+#card-close-up,
+#header,
+#header-pokedex,
+.profile-info,
 #homepage-animation-1 {
   -webkit-animation: 3s ease 0s normal forwards 1 fadein1;
   animation: 3s ease 0s normal forwards 1 fadein1;
@@ -27,7 +31,10 @@ background: url("/static/img/pokemon_bg.png") no-repeat center center fixed;
   100% { opacity:1; }
 }
 
-
+#header-card-details,
+.usercard,
+#pokedex,
+#card-collection,
 #homepage-animation-2 {
   -webkit-animation: 3s ease 0s normal forwards 1 fadein2;
   animation: 3s ease 0s normal forwards 1 fadein2;
@@ -45,7 +52,7 @@ background: url("/static/img/pokemon_bg.png") no-repeat center center fixed;
   100% { opacity:1; }
 }
 
-
+#card-details-info,
 #btnrandom {
   -webkit-animation: 4s ease 0s normal forwards 1 fadein3;
   animation: 4s ease 0s normal forwards 1 fadein3;
