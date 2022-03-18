@@ -1,6 +1,6 @@
 # Pocket Trade 
 
-Gotta catch 'em all? Pocket Trade is a full-stack web application and your one-stop shop for collecting digital first-generation Pokémon cards. With its name being an homage to the original manga, Pokémon Pocket Monsters, Pocket Trade allows users (or Pokémon Trainers as we like to call them) to search for cards by name to view the original artwork. If you see a card you like, you can add it to your shopping cart to purchase. After shopping, you can purchase the cards to add to your collection. Card ownership is constantly in flux as Pokémon Trainers purchase cards from other Trainers. Unsure of which Pokémon to catch first? There is a random card generator on the homepage that provides available cards for purchase. Your favorite Pokémon is looking for a new trainer. Start your collection today
+Gotta catch 'em all? Pocket Trade is a full-stack web application and your one-stop shop for collecting digital first-generation Pokémon cards. With its name being an homage to the original manga, Pokémon Pocket Monsters, Pocket Trade allows users (or Pokémon Trainers as we like to call them) to search for cards by name to view the original artwork. If you see a card you like, you can add it to your shopping cart to purchase. After shopping, you can purchase the cards to add to your collection. Card ownership is constantly in flux as Pokémon Trainers purchase cards from other Trainers. Unsure of which Pokémon to catch first? There is a random card generator on the homepage to give you some ideas. Your favorite Pokémon is looking for a new trainer. Start your collection today
 
 ![image](https://user-images.githubusercontent.com/91762225/158905571-03ab001e-34f9-4baf-8a9b-38772d82f810.png)
 
@@ -13,6 +13,35 @@ Frontend: JavaScript, jQuery, HTML 5, CSS 3, Bootstrap, React
 
 APIs: Pokemon TCG
 
+
+## Installation
+
+To run Pocket Trade, you will need an API key for Pokemon TCG. 
+Python 3 and PostgreSQL also need to be installed on your machine.
+
+<!-- Clone this repository
+
+git clone https://github.com/lauren-moore/pocket-trade.git
+Optional: Create and activate a virtual environment using virtualenv
+
+pip3 install virtualenv
+virtualenv env
+source env/bin/activate
+Install dependencies from requirements.txt
+
+pip3 install -r requirements.txt
+Create environmental variables to hold your API keys
+
+export MAPS_GEOCODING_KEY='{YOUR GEOCODING API KEY HERE}'
+export MAPS_JS_KEY='{YOUR MAPS JS API KEY HERE}'
+export HIKING_PROJECT_KEY='{YOUR HIKING PROJECT API KEY HERE}'
+Create your database & seed sample data
+
+createdb poke
+python3 seed_database.py
+Run the app on localhost
+
+python3 server.py -->
 
 ## Demo
 Click Here to watch the demo
