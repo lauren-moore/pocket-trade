@@ -7,8 +7,12 @@ Gotta catch 'em all? Pocket Trade is a full-stack web application and your one-s
 
 ## Tech Stack
 
-* Tech Stack includes Python, Javascript, SQL, SQLAlchemy, HTML5, CSS, jQuery, Jinja, Flask, Bootstrap, AJAX, React
-* Data was sourced from the Pokemon TCG API. 
+Backend: Python 3, PostgreSQL, Flask, SQLAlchemy, Jinja
+
+Frontend: JavaScript, jQuery, HTML 5, CSS 3, Bootstrap, React
+
+APIs: Pokemon TCG
+
 
 ## Demo
 Click Here to watch the demo
