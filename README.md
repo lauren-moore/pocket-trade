@@ -1,4 +1,4 @@
-# Pocket Trade 
+![poke logo](/static/img/poke_ball.png) # Pocket Trade 
 
 Gotta catch 'em all? Pocket Trade is a full-stack web application and your one-stop shop for collecting digital first-generation Pokémon cards. With its name being an homage to the original manga, Pokémon Pocket Monsters, Pocket Trade allows users (or Pokémon Trainers as we like to call them) to search for cards by name to view the original artwork. If you see a card you like, you can add it to your shopping cart to purchase. After shopping, you can purchase the cards to add to your collection. Card ownership is constantly in flux as Pokémon Trainers purchase cards from other Trainers. Unsure of which Pokémon to catch first? There is a random card generator on the homepage to give you some ideas. Your favorite Pokémon is looking for a new trainer. Start your collection today
 
