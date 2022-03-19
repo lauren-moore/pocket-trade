@@ -23,3 +23,15 @@ homepageBtn.addEventListener('click', (evt) => {
       randomLink.innerHTML = `<a href="/usercards/${result.data.card_id}" style="text-decoration: none; color:white;">Catch`
     });
 });  
+
+
+// const backBtn = document.getElementById('back-button');
+// <button id="back-button" onclick="history.back()">Back</button>;
+
+<button
+    id="back-button"
+    action="action"
+    onclick="window.history.go(-1); return false;"
+    type="submit"
+    value="Cancel"
+/>
