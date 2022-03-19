@@ -22,7 +22,7 @@ To run Pocket Trade, you will need an API key for Pokemon TCG.
 Python 3 and PostgreSQL also need to be installed on your machine.
 
 
-**Running Route Trout on your machine**
+**How to run Pocket Trade on your machine**
 
 Clone this repository
 ```shell
