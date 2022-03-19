@@ -16,32 +16,42 @@ APIs: Pokemon TCG
 
 ## Installation
 
+**Prerequisites**
+
 To run Pocket Trade, you will need an API key for Pokemon TCG. 
 Python 3 and PostgreSQL also need to be installed on your machine.
 
-<!-- Clone this repository
 
+**Running Route Trout on your machine**
+
+Clone this repository
+```shell
 git clone https://github.com/lauren-moore/pocket-trade.git
+```
 Optional: Create and activate a virtual environment using virtualenv
-
+```shell
 pip3 install virtualenv
 virtualenv env
 source env/bin/activate
+```
 Install dependencies from requirements.txt
-
+```shell
 pip3 install -r requirements.txt
-Create environmental variables to hold your API keys
+```
+Create environmental variables to hold your API key
+```shell
+export POKEMONTCG_KEY='{YOUR POKEMON TCG API KEY HERE}'
 
-export MAPS_GEOCODING_KEY='{YOUR GEOCODING API KEY HERE}'
-export MAPS_JS_KEY='{YOUR MAPS JS API KEY HERE}'
-export HIKING_PROJECT_KEY='{YOUR HIKING PROJECT API KEY HERE}'
+```
 Create your database & seed sample data
-
+```shell
 createdb poke
 python3 seed_database.py
+```
 Run the app on localhost
-
-python3 server.py -->
+```shell
+python3 server.py
+```
 
 ## Demo
 Click Here to watch the demo
