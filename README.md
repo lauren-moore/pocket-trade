@@ -7,11 +7,11 @@ Gotta catch 'em all? Pocket Trade is a full-stack web application and your one-s
 
 ## Tech Stack
 
-Backend: Python 3, PostgreSQL, Flask, SQLAlchemy, Jinja
+**Backend:** Python 3, PostgreSQL, Flask, SQLAlchemy, Jinja
 
-Frontend: JavaScript, jQuery, HTML 5, CSS 3, Bootstrap, React
+**Frontend:** JavaScript, jQuery, HTML 5, CSS 3, Bootstrap, React
 
-APIs: Pokemon TCG
+**API:** Pokemon TCG
 
 
 ## Installation
@@ -38,7 +38,7 @@ Install dependencies from requirements.txt
 ```shell
 pip3 install -r requirements.txt
 ```
-Create environmental variables to hold your API key
+Create an environmental variable to hold your API key
 ```shell
 export POKEMONTCG_KEY='{YOUR POKEMON TCG API KEY HERE}'
 
