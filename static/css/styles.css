@@ -156,6 +156,15 @@ img{
   padding-left: 75px;
 }
 
+.grid-card-search.grow {
+  transition: all .2s ease-in-out;
+}
+
+.grid-card-search:hover {
+  transform: scale(1.1);
+  opacity: 0.8;
+}
+
 .grid-cards-collection {
   display: grid;
   grid-template-columns: 0fr 0fr 0fr 0fr 0fr;
@@ -228,14 +237,7 @@ img{
 
 .card:hover {
   transform: scale(1.1);
-  /* position: absolute; */
-  /* z-index: 1; */
-  color: Indigo;
   opacity: 0.8;
-  /* left: 0;
-  top: 0; *3
-  /* height: 100%;
-  width: 100%; */
 }
 
 .grid-usercards {

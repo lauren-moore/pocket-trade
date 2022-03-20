@@ -30,7 +30,7 @@
     <div class="grid-cards-collection">
         {% for usercard in usercards %}
           {% if usercard.user_id == user.user_id and usercard.sold == False %}
-            <a href="/cards/{{ usercard.user_card_id }}"><img src="{{ usercard.card.image_path}}" alt="photo"></a>
+            <a href="/cards/{{ usercard.user_card_id }}"><img src="{{ usercard.card.image_path}}" class="card"></a>
           {% endif %}
         {% endfor %}
         {% if not usercards %}

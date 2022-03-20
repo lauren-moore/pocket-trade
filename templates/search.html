@@ -10,7 +10,7 @@
           <div class="grid-cards-search">
             {% if results %}
               {% for card in results %}
-                <a href="/usercards/{{ card.card_id }}"><img src="{{ card.image_path }}"></a>
+                <a href="/usercards/{{ card.card_id }}"><img src="{{ card.image_path }}" class="card"></a>
               {% endfor %}
             {% else %}
             <div class="container-fluid" style="width: 1200px;">
@@ -21,5 +21,6 @@
     </div>  
   </div>
 </div>
+
 
 {% endblock %}

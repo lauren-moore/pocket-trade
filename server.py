@@ -293,10 +293,10 @@ def process_logout():
     return redirect("/")
 
 
-@app.route('/search', methods=["POST"])
+@app.route('/search')
 def search():
     
-    searched = request.form.get("searched")
+    searched = request.args.get("searched")
     results = crud.get_card_by_name(searched)
     num_of_results = len(results)
    
