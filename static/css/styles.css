@@ -31,6 +31,7 @@ background: url("/static/img/pokemon_bg.png") no-repeat center center fixed;
   100% { opacity:1; }
 }
 
+#card-details-info,
 #header-card-details,
 .usercard,
 #pokedex,
@@ -52,7 +53,7 @@ background: url("/static/img/pokemon_bg.png") no-repeat center center fixed;
   100% { opacity:1; }
 }
 
-#card-details-info,
+
 #btnrandom {
   -webkit-animation: 4s ease 0s normal forwards 1 fadein3;
   animation: 4s ease 0s normal forwards 1 fadein3;
