@@ -25,7 +25,7 @@ rarities_in_db = []
 for card in card_data["data"]:
 
     name = card["name"]
-    price = randint(1,999)
+    price = randint(1,50)
     pokedex_number = card["nationalPokedexNumbers"][0]
     image_path = card["images"]["large"]
 
@@ -42,8 +42,6 @@ for card in card_data["data"]:
         rarity = None
     
     db_card = crud.create_card(name, price, db_rarity, flavor_text, pokedex_number, image_path)
-
-    
     cards_in_db.append(db_card)
   
 
@@ -65,8 +63,7 @@ model.db.session.commit()
 
 
 
-# 10 random users and cards
-
+# create users
 for n in range(10):
     name = f'Lauren {n}'
     email = f'user{n}@test.com'
@@ -75,7 +72,7 @@ for n in range(10):
     user = crud.create_user(name, email, password)
     model.db.session.add(user)
 
-    for n2 in range(100):
+    for n2 in range(50):
         random_card = choice(cards_in_db)
 
         user_card = crud.create_user_card(user, random_card)
