@@ -1,11 +1,13 @@
-////// React //////
+
+const {useState, useEffect} = React
 
 const TradingCard = (props) => {
-  const url = `/usercards/${props.card_id}`
+  const {card_id, img_path} = props
+  const url = `/usercards/${card_id}`
 
   return (
     <div className="card">
-      <a href={url}><img src={props.img_path} alt="profile" /></a>
+      <a href={url}><img src={img_path} alt="profile" /></a>
     </div>
   );
 }
@@ -25,13 +27,13 @@ const RarityCardButton = (props) => {
 }
 
 const TradingCardContainer = () => {
-  const [allCards, setAllCards] = React.useState([]);
-  const [filteredCards, setFilteredCards] = React.useState([]);
-  const [cardType, setCardType] = React.useState('All Cards');
-  const [rarities, setRarities] = React.useState([]);
-  const [header, setHeader] = React.useState('All Cards');
+  const [allCards, setAllCards] = useState([]);
+  const [filteredCards, setFilteredCards] = useState([]);
+  const [cardType, setCardType] = useState('All Cards');
+  const [rarities, setRarities] = useState([]);
+  const [header, setHeader] = useState('All Cards');
  
-  React.useEffect(() => {
+  useEffect(() => {
     const fetchData = async () => {
       const response = await fetch('/get-cards')
       const jsonResult = await response.json()
@@ -45,7 +47,7 @@ const TradingCardContainer = () => {
     fetchData()
   }, [])
 
-  React.useEffect(() => {
+  useEffect(() => {
     const filteredCards = allCards.filter((card) => card.rarity === cardType)
     setFilteredCards(filteredCards)
     setHeader(cardType)

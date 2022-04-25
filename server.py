@@ -4,7 +4,6 @@ from model import Rarity, Card, db, connect_to_db
 from jinja2 import StrictUndefined
 import crud
 from datetime import date
-import requests
 from random import randint
 
 app = Flask(__name__)
@@ -21,7 +20,6 @@ def homepage():
     random_card = crud.get_card_by_id(card_id)
   
     return render_template('homepage.html', random_card=random_card)
-    # return render_template('homepage.html')
 
 
 @app.route('/random')
@@ -122,15 +120,6 @@ def show_card(user_card_id):
     usercard = crud.get_user_card_by_id(user_card_id)
 
     return render_template('card_details.html', usercard=usercard)
-
-
-# @app.route('/users')
-# def all_users():
-#     """View users page."""
-
-#     users = crud.get_users()
-
-#     return render_template('all_users.html', users=users)
 
 
 @app.route('/collection/<user_id>')
