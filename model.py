@@ -22,6 +22,33 @@ class User(db.Model):
         return f'<User user_id={self.user_id} name={self.name} email={self.email}>'
 
 
+    @classmethod
+    def create_user(self, name, email, password):
+        """Create and return a new user."""
+        user = User(name=name,
+                    email=email, 
+                    password=password)
+
+        return user
+
+    @classmethod
+    def get_users(self):
+
+        return User.query.all()
+
+    @classmethod
+    def get_user_by_id(user_id):
+
+        return User.query.get(user_id)
+
+    @classmethod
+    def get_user_by_email(email):
+    
+        return User.query.filter(User.email == email).first()
+
+
+
+
 class Card(db.Model):
     """A Pokemon card."""
  
@@ -42,6 +69,49 @@ class Card(db.Model):
 
     def __repr__(self):
         return f'<Card card_id={self.card_id} name={self.name} price={self.price}>'
+
+    @classmethod
+    def create_card(name, price, rarity, flavor_text, pokedex_number, image_path):
+
+    card = Card(name=name, 
+                price=price, 
+                rarity=rarity,
+                flavor_text=flavor_text, 
+                pokedex_number=pokedex_number, 
+                image_path=image_path)
+
+    return card
+
+    @classmethod
+    def get_cards_by_rarity(rarity_id):
+    
+        return Card.query.get(rarity_id).all()
+
+    @classmethod
+    def get_cards():
+
+        return Card.query.order_by(Card.pokedex_number).all()
+
+    @classmethod
+    def get_card_by_id(card_id):
+
+        return Card.query.get(card_id)
+
+    @classmethod
+    def get_cards_by_name(name):
+
+        return Card.query.get(name).all()
+
+    @classmethod
+    def get_cards_by_price(price):
+
+        return Card.query.get(price).all()
+
+    @classmethod
+    def get_card_by_name(searched):
+
+        searched_cards = Card.query.filter(Card.name.ilike('%' + searched + '%')).all()
+        return (searched_cards)
 
 
 class Rarity(db.Model):
@@ -145,8 +215,5 @@ def connect_to_db(flask_app, db_uri="postgresql:///poke", echo=True):
 if __name__ == "__main__":
     from server import app
 
-    # Call connect_to_db(app, echo=False) if your program output gets
-    # too annoying; this will tell SQLAlchemy not to print out every
-    # query it executes.
 
     connect_to_db(app)
