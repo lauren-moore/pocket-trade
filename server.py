@@ -1,8 +1,7 @@
 """Server for Pokemon Card app."""
 from flask import Flask, render_template, request, flash, session, redirect, jsonify
-from model import Rarity, Card, db, connect_to_db
+from model import User, UserCard, Order, Rarity, Card, db, connect_to_db
 from jinja2 import StrictUndefined
-import crud
 from datetime import date
 from random import randint
 
@@ -17,7 +16,7 @@ def homepage():
 
     #get random card to display on homepage
     card_id = randint(1, 200)
-    random_card = crud.get_card_by_id(card_id)
+    random_card = Card.get_card_by_id(card_id)
   
     return render_template('homepage.html', random_card=random_card)
 
@@ -26,7 +25,7 @@ def homepage():
 def random():
     #get random card to display on homepage
     card_id = randint(1, 250)
-    random_card = crud.get_card_by_id(card_id)
+    random_card = Card.get_card_by_id(card_id)
     data = {
         "card_id": random_card.card_id,
         "image_path": random_card.image_path,
@@ -48,7 +47,7 @@ def view_register_user():
 def show_rarities():
     """Browse cards by rarity."""
 
-    rarities = crud.get_rarity()
+    rarities = Rarity.get_rarity()
     for rarity in rarities:
         data = {
             "name": rarity.name,
@@ -61,7 +60,7 @@ def show_rarities():
 def get_cards():
     """View cards page."""
 
-    cards = crud.get_cards()
+    cards = Card.get_cards()
     json_cards = []
 
     for card in cards:
@@ -75,8 +74,8 @@ def get_cards():
 def all_cards():
     """View cards page."""
 
-    cards = crud.get_cards()
-    rarities = crud.get_rarity()
+    cards = Card.get_cards()
+    rarities = Rarity.get_rarity()
     
     return render_template('all_cards.html',
                             cards=cards,
@@ -87,10 +86,10 @@ def all_cards():
 def all_cards_with_rarity(rarity_id):
     """View groups of cards based on their rarity."""
 
-    rarities = crud.get_rarity()
+    rarities = Rarity.get_rarity()
     rarity_type = Rarity.query.filter_by(rarity_id=rarity_id).first()
     
-    cards = crud.get_cards()
+    cards = Card.get_cards()
     rarity_cards = []
     for card in cards:
         if card.rarity_id == rarity_type.rarity_id:
@@ -103,9 +102,9 @@ def all_cards_with_rarity(rarity_id):
 def all_usercards(card_id):
     """View all available usercards."""
 
-    usercards = crud.get_user_cards()
+    usercards = UserCard.get_user_cards()
 
-    card = crud.get_card_by_id(card_id)
+    card = Card.get_card_by_id(card_id)
 
 
     return render_template('all_usercards.html', 
@@ -117,7 +116,7 @@ def all_usercards(card_id):
 def show_card(user_card_id):
     """Show card details."""
 
-    usercard = crud.get_user_card_by_id(user_card_id)
+    usercard = UserCard.get_user_card_by_id(user_card_id)
 
     return render_template('card_details.html', usercard=usercard)
 
@@ -126,9 +125,9 @@ def show_card(user_card_id):
 def show_user(user_id):
     """Show user details."""
 
-    user = crud.get_user_by_id(user_id)
-    usercards = crud.get_user_cards()
-    card = crud.get_cards()
+    user = User.get_user_by_id(user_id)
+    usercards = UserCard.get_user_cards()
+    card = Card.get_cards()
     
     count_of_cards = 0
 
@@ -153,7 +152,7 @@ def show_shopping_cart():
     cart = session.get("cart", {})
 
     for user_card_id, quantity in cart.items():
-        usercard = crud.get_user_card_by_id(user_card_id)
+        usercard = UserCard.get_user_card_by_id(user_card_id)
         
         order_total += usercard.card.price
         shopping_cart.append(usercard)
@@ -195,7 +194,7 @@ def create_order():
     shopping_cart = session.get('cart')
 
     user_logged_in = session.get("user_id")
-    user = crud.get_user_by_id(user_logged_in)
+    user = User.get_user_by_id(user_logged_in)
 
     if user_logged_in is None:
         flash("Please log in to trade cards.")
@@ -208,18 +207,18 @@ def create_order():
         for user_card_id, _quantity in shopping_cart.items():
 
             #get usercard object
-            usercard = crud.get_user_card_by_id(user_card_id)
+            usercard = UserCard.get_user_card_by_id(user_card_id)
 
             #create new order
-            order = crud.create_order(usercard, user, date.today())
+            order = Order.create_order(usercard, user, date.today())
             db.session.add(order)
 
             #update existing usercard
-            update = crud.update_user_card(user_card_id)
+            update = UserCard.update_user_card(user_card_id)
             db.session.add(update)
 
             #create new uesrcard assigned to user logged in
-            new_usercard = crud.create_user_card(user, usercard.card)
+            new_usercard = UserCard.create_user_card(user, usercard.card)
             db.session.add(new_usercard)
 
         db.session.commit()
@@ -238,12 +237,12 @@ def register_user():
     email = request.form.get("email")
     password = request.form.get("password")
 
-    user = crud.get_user_by_email(email)
+    user = User.get_user_by_email(email)
 
     if user:
         flash("An account has already been created with that email address. Try again.")
     else:
-        user = crud.create_user(name, email, password)
+        user = User.create_user(name, email, password)
         db.session.add(user)
         db.session.commit()
         flash("Account created! Please log in.")
@@ -258,7 +257,7 @@ def process_login():
     email = request.form.get("email")
     password = request.form.get("password")
 
-    user = crud.get_user_by_email(email)
+    user = User.get_user_by_email(email)
     if not user or user.password != password:
         flash("The email or password you entered was incorrect.")
 
@@ -286,7 +285,7 @@ def process_logout():
 def search():
     
     searched = request.args.get("searched")
-    results = crud.get_card_by_name(searched)
+    results = Card.get_card_by_name(searched)
     num_of_results = len(results)
    
     return render_template('search.html',

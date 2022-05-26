@@ -33,16 +33,19 @@ class User(db.Model):
 
     @classmethod
     def get_users(self):
+        '''get all users.'''
 
         return User.query.all()
 
     @classmethod
-    def get_user_by_id(user_id):
+    def get_user_by_id(self, user_id):
+        '''get user by id.'''
 
         return User.query.get(user_id)
 
     @classmethod
-    def get_user_by_email(email):
+    def get_user_by_email(self, email):
+        '''get user by email.'''
     
         return User.query.filter(User.email == email).first()
 
@@ -71,44 +74,51 @@ class Card(db.Model):
         return f'<Card card_id={self.card_id} name={self.name} price={self.price}>'
 
     @classmethod
-    def create_card(name, price, rarity, flavor_text, pokedex_number, image_path):
+    def create_card(self, name, price, rarity, flavor_text, pokedex_number, image_path):
+        '''create new card.'''
 
-    card = Card(name=name, 
-                price=price, 
-                rarity=rarity,
-                flavor_text=flavor_text, 
-                pokedex_number=pokedex_number, 
-                image_path=image_path)
+        card = Card(name=name, 
+                    price=price, 
+                    rarity=rarity,
+                    flavor_text=flavor_text, 
+                    pokedex_number=pokedex_number, 
+                    image_path=image_path)
 
-    return card
+        return card
 
     @classmethod
-    def get_cards_by_rarity(rarity_id):
+    def get_cards_by_rarity(self, rarity_id):
+        '''get cards by rarity.'''
     
         return Card.query.get(rarity_id).all()
 
     @classmethod
-    def get_cards():
+    def get_cards(self):
+        '''get all cards.'''
 
         return Card.query.order_by(Card.pokedex_number).all()
 
     @classmethod
-    def get_card_by_id(card_id):
+    def get_card_by_id(self, card_id):
+        '''get card by card_id.'''
 
         return Card.query.get(card_id)
 
     @classmethod
-    def get_cards_by_name(name):
+    def get_cards_by_name(self, name):
+        '''get card by name.'''
 
         return Card.query.get(name).all()
 
     @classmethod
-    def get_cards_by_price(price):
+    def get_cards_by_price(self, price):
+        '''get cards by price.'''
 
         return Card.query.get(price).all()
 
     @classmethod
-    def get_card_by_name(searched):
+    def get_card_by_name(self, searched):
+        '''get card by searched name.'''
 
         searched_cards = Card.query.filter(Card.name.ilike('%' + searched + '%')).all()
         return (searched_cards)
@@ -129,6 +139,20 @@ class Rarity(db.Model):
 
     def __repr__(self):
         return f'<Rarity id={self.rarity_id} is name={self.name}>'
+
+    @classmethod
+    def create_rarity(self, name):
+        '''create new rarity.'''
+
+        rarity = Rarity(name=name)
+
+        return rarity
+
+    @classmethod
+    def get_rarity(self):
+        '''get all rarities.'''
+
+        return Rarity.query.all()
 
 
 
@@ -182,6 +206,47 @@ class UserCard(db.Model):
     def __repr__(self):
         return f'<Card {self.card_id} belongs to user {self.user_id}>'
 
+    @classmethod
+    def create_user_card(self, user, card):
+        '''create new user card.'''
+
+        user_card = UserCard(user=user, card=card, sold=False)
+
+        return user_card
+
+    @classmethod
+    def get_user_cards(self):
+        '''get all user cards.'''
+
+        return UserCard.query.join(Card).order_by(Card.pokedex_number).all()
+
+
+    @classmethod
+    def get_user_cards_by_user(self, user_id):
+        '''get user cards by user id.'''
+
+        return UserCard.query.get(user_id)
+
+    @classmethod
+    def get_user_cards_by_card(self, card_id):
+        '''get user cards by card id.'''
+
+        return UserCard.query.get(card_id)
+
+    @classmethod
+    def get_user_card_by_id(self, user_card_id):
+        '''get user card by id.'''
+
+        return UserCard.query.get(user_card_id)
+
+
+    @classmethod
+    def update_user_card(self, user_card_id):
+
+        user_card = UserCard.query.get(user_card_id)
+        user_card.sold = True
+
+        return user_card
 
 class Order(db.Model):
     """A receipt of card purchase."""
@@ -200,6 +265,21 @@ class Order(db.Model):
 
     def __repr__(self):
         return f'<Order order_id={self.order_id} user_card={self.user_card_id} user={self.user_id}>'
+
+
+    @classmethod
+    def create_order(self, user_card, user, purchased):
+        """Create and return a new rating."""
+
+        order = Order(user_card=user_card, user=user, purchased=purchased)
+
+        return order
+
+    @classmethod
+    def get_orders(self):
+        '''Return all orders.'''
+
+        return Order.query.all()
 
 
 def connect_to_db(flask_app, db_uri="postgresql:///poke", echo=True):
