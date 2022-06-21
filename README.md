@@ -9,7 +9,7 @@ Gotta catch 'em all? Pocket Trade is a full-stack web application and your one-s
 
 **Backend:** Python 3, PostgreSQL, Flask, SQLAlchemy, Jinja
 
-**Frontend:** JavaScript, jQuery, HTML 5, CSS 3, Bootstrap, React
+**Frontend:** JavaScript, HTML 5, CSS 3, Bootstrap, React
 
 **API:** Pokemon TCG
 
